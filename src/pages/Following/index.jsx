@@ -1,1 +1,1 @@
-export { default as Following } from './Following';
+export { default } from './Following';
