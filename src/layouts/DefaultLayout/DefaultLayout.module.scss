@@ -1,0 +1,16 @@
+.wrapper {
+  max-width: var(--default-layout-max-width);
+  min-width: var(--default-layout-min-width);
+  padding-left: var(--default-layout-horizontal-spacer);
+  padding-right: var(--default-layout-horizontal-spacer);
+  margin: var(--header-height) auto 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: var(--sidebar-min-width) 1fr;
+
+  @media screen and (min-width: 1070px) {
+    grid-template-columns: var(--sidebar-max-width) 1fr;
+  }
+}
