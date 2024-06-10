@@ -3,6 +3,7 @@
   left: 0;
   right: 0;
   top: 0;
+
   height: var(--header-height);
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
   z-index: 1000;
@@ -13,10 +14,12 @@
   justify-content: space-between;
   align-items: center;
   gap: 8px;
+
   max-width: var(--default-layout-max-width);
   min-width: var(--default-layout-min-width);
   width: 100%;
   height: 100%;
+
   margin-left: auto;
   margin-right: auto;
   padding-left: var(--default-layout-horizontal-spacer);
@@ -30,14 +33,14 @@
 
   display: flex;
   justify-content: space-between;
-  // align-items: center;
+
   width: clamp(164px, 30%, 500px);
-  background-color: var(--text-color-opacity-6);
   height: 46px;
+  background-color: var(--text-color-opacity-6);
   border-radius: 92px;
   border: 1px solid transparent;
-  overflow: hidden;
   padding-left: 16px;
+  overflow: hidden;
 
   &:has(.search-input:hover) {
     border-color: #c5c6c9;
@@ -47,6 +50,7 @@
     width: calc(100% - var(--btn-width) - (var(--search-status-horizontal-spacer) * 2) - var(--svg-width));
     background-color: transparent;
     caret-color: var(--primary);
+
     font-size: 1.6rem;
     font-weight: 400;
 
@@ -74,6 +78,7 @@
       width: 1px;
       height: 28px;
       background-color: var(--text-color-opacity-120);
+
       position: absolute;
       top: 50%;
       left: 0;
