@@ -1,8 +1,18 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
 
+$primary: #fe2c55;
+$text-color: #161823;
+
 :root {
-  --primary: #fe2c55;
+  --primary: #{$primary};
+  --text-color: #{$text-color};
+
+  // Color opacity
+  --text-color-opacity-6: #{rgba($text-color, 0.06)};
+  --text-color-opacity-20: #{rgba($text-color, 0.8)};
+  --text-color-opacity-34: #{rgba($text-color, 0.34)};
+  --text-color-opacity-120: #{rgba($text-color, 0.12)};
 
   // Default layout
   --default-layout-horizontal-spacer: 16px;
@@ -15,8 +25,8 @@
   --sidebar-min-width: 72px;
   --sidebar-horizontal-spacer: 8px;
 
-  @media screen and (min-width: 600px) {
-    --default-layout-horizontal-spacer: 16px;
+  @media screen and (min-width: 768px) {
+    --default-layout-horizontal-spacer: 24px;
   }
 }
 
@@ -34,5 +44,18 @@ body {
   font-family: 'IBM Plex Sans', Arial, Tahoma, sans-serif;
   font-size: 1.6rem;
   line-height: 1.5;
+  font-weight: 400;
   text-rendering: optimizeSpeed;
+  color: var(--text-color);
+}
+
+button,
+input,
+[tabindex] {
+  outline: none;
+  border: none;
+}
+
+a[href] {
+  text-decoration: none;
 }
