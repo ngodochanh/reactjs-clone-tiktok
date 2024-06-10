@@ -15,6 +15,10 @@ const images = {
     url: require('~/assets/images/find.svg').default,
     alt: 'find',
   },
+  verified: {
+    url: require('~/assets/images/verified.svg').default,
+    alt: 'verified',
+  },
 };
 
 export default images;

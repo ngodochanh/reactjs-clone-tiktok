@@ -9,13 +9,21 @@ $text-color: #161823;
   --text-color: #{$text-color};
 
   // Color opacity
+  --text-color-opacity-3: #{rgba($text-color, 0.03)};
   --text-color-opacity-6: #{rgba($text-color, 0.06)};
   --text-color-opacity-20: #{rgba($text-color, 0.8)};
-  --text-color-opacity-34: #{rgba($text-color, 0.34)};
+  --text-color-opacity-50: #{rgba($text-color, 0.5)};
   --text-color-opacity-120: #{rgba($text-color, 0.12)};
+  --text-color-opacity-340: #{rgba($text-color, 0.34)};
+
+  // Spacing
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
 
   // Default layout
-  --default-layout-horizontal-spacer: 16px;
+  --default-layout-horizontal-spacer: var(--spacing-16);
   --default-layout-max-width: calc(var(--default-layout-horizontal-spacer) + 1900px);
   --default-layout-min-width: calc(var(--default-layout-horizontal-spacer) + 608px);
   // Header
@@ -23,10 +31,9 @@ $text-color: #161823;
   // Sidebar
   --sidebar-max-width: 240px;
   --sidebar-min-width: 72px;
-  --sidebar-horizontal-spacer: 8px;
 
   @media screen and (min-width: 768px) {
-    --default-layout-horizontal-spacer: 24px;
+    --default-layout-horizontal-spacer: var(--spacing-24);
   }
 }
 

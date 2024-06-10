@@ -13,7 +13,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-8);
 
   max-width: var(--default-layout-max-width);
   min-width: var(--default-layout-min-width);
@@ -27,66 +27,123 @@
 }
 
 .search {
-  --btn-width: 52px;
-  --search-status-horizontal-spacer: 12px;
-  --svg-width: 16px;
+  flex: 1 1 auto;
+  max-width: 500px;
+  position: relative;
 
-  display: flex;
-  justify-content: space-between;
+  .search-form {
+    --btn-width: 52px;
+    --search-status-horizontal-spacer: 12px;
+    --svg-width: 16px;
 
-  width: clamp(164px, 30%, 500px);
-  height: 46px;
-  background-color: var(--text-color-opacity-6);
-  border-radius: 92px;
-  border: 1px solid transparent;
-  padding-left: 16px;
-  overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    height: 46px;
+    background-color: var(--text-color-opacity-6);
+    border-radius: 92px;
+    border: 1px solid transparent;
+    padding-left: var(--spacing-16);
+    overflow: hidden;
 
-  &:has(.search-input:hover) {
-    border-color: #c5c6c9;
+    &:has(.search-input:hover) {
+      border-color: #c5c6c9;
+    }
+
+    &:has(.search-input:focus) ~ .search-result {
+      display: block;
+    }
+
+    .search-input {
+      width: calc(100% - var(--btn-width) - (var(--search-status-horizontal-spacer) * 2) - var(--svg-width));
+      background-color: transparent;
+      caret-color: var(--primary);
+
+      font-size: 1.6rem;
+      font-weight: 400;
+
+      &:hover ~ .search-btn {
+        background-color: var(--text-color-opacity-6);
+      }
+
+      &:hover ~ .search-btn svg {
+        fill: var(--text-color);
+      }
+    }
+
+    .search-status {
+      margin: auto var(--search-status-horizontal-spacer);
+    }
+
+    .search-btn {
+      position: relative;
+      width: var(--btn-width);
+      cursor: pointer;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 28px;
+        background-color: var(--text-color-opacity-120);
+
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+
+      svg {
+        fill: var(--text-color-opacity-340);
+      }
+    }
   }
 
-  .search-input {
-    width: calc(100% - var(--btn-width) - (var(--search-status-horizontal-spacer) * 2) - var(--svg-width));
-    background-color: transparent;
-    caret-color: var(--primary);
+  .search-result {
+    position: absolute;
+    top: 100%;
+    left: 0;
 
-    font-size: 1.6rem;
-    font-weight: 400;
+    width: 100%;
+    min-width: 250px;
+    max-height: min(-156px + 100vh, 734px);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+    padding-top: var(--spacing-8);
+    overscroll-behavior: contain;
+    overflow-y: scroll;
+    display: none;
 
-    &:hover ~ .search-btn {
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 4px;
       background-color: var(--text-color-opacity-6);
     }
 
-    &:hover ~ .search-btn svg {
-      fill: var(--text-color);
-    }
-  }
-
-  .search-status {
-    margin: auto var(--search-status-horizontal-spacer);
-  }
-
-  .search-btn {
-    position: relative;
-    width: var(--btn-width);
-    cursor: pointer;
-
-    &::after {
-      content: '';
-      display: block;
-      width: 1px;
-      height: 28px;
-      background-color: var(--text-color-opacity-120);
-
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
+    .search-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      height: 30px;
+      color: var(--text-color-opacity-340);
+      padding: 5px 12px;
     }
 
-    svg {
-      fill: var(--text-color-opacity-34);
+    .view-all-results {
+      font-weight: 600;
+      padding: var(--spacing-16);
+      text-align: center;
+
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      &:hover {
+        background-color: var(--text-color-opacity-3);
+        cursor: pointer;
+      }
     }
   }
 }
