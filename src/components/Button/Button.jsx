@@ -4,46 +4,55 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-function Button({
-  children, // Nội dung
-  leftIcon, // Icon trái
-  rightIcon, // Icon phải
-  to, // Đường dẫn Link của React Router
-  href, // Đường dẫn link của thẻ a
-  rounded = false, // Góc bo tròn
-  text = false, // Chỉ hiển thị text, không có nền hoặc border
-  outline = false, // Có border không có viền
-  primary = false, // Nút chính
-  disabled = false, // Vô hiệu hóa
-  large = false, // Kích cỡ lớn
-  className, // Thêm class
-  ...passProps // Thêm attributes hay sự kiện, ...
-}) {
-  let Comp = 'button'; // Mặc định là button
+// Định nghĩa các loại nút cho các props khác nhau
+const buttonTypes = Object.freeze({
+  href: 'a', // Thẻ a cho các liên kết ngoài
+  to: Link, // Thành phần Link cho điều hướng nội bộ
+});
 
-  const props = {
-    ...passProps,
-  };
+// Hàm này để xác định loại thành phần nút
+const ButtonFactory = (props) => {
+  for (const [key, value] of Object.entries(props)) {
+    if (Object.keys(props).includes(key) && value && value.length > 0) {
+      return buttonTypes[key];
+    }
+  }
+  return 'button'; // Mặc định là thẻ button
+};
 
+// Xóa các trình xử lý sự kiện nếu nút bị vô hiệu hóa
+const removeEventsOnDisabled = (disabled, args) => {
   if (disabled) {
-    Object.keys(props).forEach((key) => {
-      if (key.startsWith('on') && typeof props[key] === 'function') {
-        delete props[key];
+    Object.keys(args).forEach((key) => {
+      if (key.startsWith('on') && typeof args[key] === 'function') {
+        delete args[key];
       }
     });
   }
+};
 
-  if (to) {
-    // Loại nút Link
-    props.to = to;
-    Comp = Link;
-  } else if (href) {
-    // Loại nút a
-    props.href = href;
-    Comp = 'a';
-  }
+function Button({
+  children, // Văn bản hoặc nội dung của nút
+  leftIcon, // Icon bên trái
+  rightIcon, // Icon bên phải
+  to, // Liên kết của React Router
+  href, // Liên kết thẻ a
+  rounded = false, // Góc bo tròn
+  text = false, // Nút chỉ có văn bản
+  outline = false, // Nút viền
+  primary = false, // Nút chính
+  disabled = false, // Trạng thái vô hiệu hóa
+  large = false, // Kích cỡ lớn
+  className, // Thêm tên class
+  ...passProps // Thêm các props và trình xử lý sự kiện khác
+}) {
+  // Xóa các sự kiện nếu nút bị vô hiệu hóa
+  removeEventsOnDisabled(disabled, passProps);
 
-  // Thêm class
+  // Xác định loại thành phần
+  let Comp = ButtonFactory(passProps);
+
+  // Thiết lập tên class
   const classes = cx('wrapper', {
     rounded,
     text,
@@ -55,7 +64,7 @@ function Button({
   });
 
   return (
-    <Comp className={classes} {...props}>
+    <Comp className={classes} {...passProps}>
       {leftIcon && <img src={leftIcon} className={cx('icon')} />}
       <span className={cx('title')}>{children}</span>
       {rightIcon && <img src={rightIcon} className={cx('icon')} />}
