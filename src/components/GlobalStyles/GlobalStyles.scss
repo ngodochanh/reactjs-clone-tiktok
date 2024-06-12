@@ -3,21 +3,28 @@
 
 $primary: #fe2c55;
 $text-color: #161823;
+$white: #ffffff;
+
+$border-radius: 92px;
 
 :root {
   --primary: #{$primary};
   --text-color: #{$text-color};
+  --white: #{$white};
 
   // Color opacity
+  --primary-opacity-6: #{rgba($primary, 0.06)};
+
+  --text-color-opacity-2: #{rgba($text-color, 0.02)};
   --text-color-opacity-3: #{rgba($text-color, 0.03)};
   --text-color-opacity-6: #{rgba($text-color, 0.06)};
-  --text-color-opacity-20: #{rgba($text-color, 0.8)};
   --text-color-opacity-50: #{rgba($text-color, 0.5)};
   --text-color-opacity-120: #{rgba($text-color, 0.12)};
   --text-color-opacity-340: #{rgba($text-color, 0.34)};
 
   // Spacing
   --spacing-4: 4px;
+  --spacing-6: 6px;
   --spacing-8: 8px;
   --spacing-16: 16px;
   --spacing-24: 24px;
@@ -32,6 +39,8 @@ $text-color: #161823;
   --sidebar-max-width: 240px;
   --sidebar-min-width: 72px;
 
+  --border-radius: #{$border-radius};
+
   @media screen and (min-width: 768px) {
     --default-layout-horizontal-spacer: var(--spacing-24);
   }
@@ -41,6 +50,7 @@ $text-color: #161823;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-size: inherit;
 }
 
 html {

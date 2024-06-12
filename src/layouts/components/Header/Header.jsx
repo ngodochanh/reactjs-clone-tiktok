@@ -4,6 +4,7 @@ import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -84,7 +85,9 @@ function Header() {
         </div>
 
         {/* Action */}
-        <div style={{ width: 278, height: '100%', backgroundColor: '#ccc' }}></div>
+        <div>
+          <Button primary>Log in</Button>
+        </div>
       </div>
     </header>
   );

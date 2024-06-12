@@ -40,7 +40,7 @@
     justify-content: space-between;
     height: 46px;
     background-color: var(--text-color-opacity-6);
-    border-radius: 92px;
+    border-radius: var(--border-radius);
     border: 1px solid transparent;
     padding-left: var(--spacing-16);
     overflow: hidden;
@@ -57,8 +57,6 @@
       width: calc(100% - var(--btn-width) - (var(--search-status-horizontal-spacer) * 2) - var(--svg-width));
       background-color: transparent;
       caret-color: var(--primary);
-
-      font-size: 1.6rem;
       font-weight: 400;
 
       &:hover ~ .search-btn {
