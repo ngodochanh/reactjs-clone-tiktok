@@ -26,6 +26,7 @@ $border-radius: 92px;
   --spacing-4: 4px;
   --spacing-6: 6px;
   --spacing-8: 8px;
+  --spacing-10: 10px;
   --spacing-16: 16px;
   --spacing-24: 24px;
 
@@ -71,8 +72,10 @@ input,
 [tabindex] {
   outline: none;
   border: none;
+  font-family: 'IBM Plex Sans', Arial, Tahoma, sans-serif;
 }
 
 a[href] {
   text-decoration: none;
+  color: var(--text-color);
 }

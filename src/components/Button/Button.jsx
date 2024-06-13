@@ -50,7 +50,7 @@ function Button({
   removeEventsOnDisabled(disabled, passProps);
 
   // Xác định loại thành phần
-  let Comp = ButtonFactory(passProps);
+  let Comp = ButtonFactory({ to, href });
 
   // Thiết lập tên class
   const classes = cx('wrapper', {
@@ -65,9 +65,9 @@ function Button({
 
   return (
     <Comp className={classes} {...passProps}>
-      {leftIcon && <img src={leftIcon} className={cx('icon')} />}
+      {leftIcon && <img src={leftIcon.url} alt={leftIcon.alt} className={cx('icon')} />}
       <span className={cx('title')}>{children}</span>
-      {rightIcon && <img src={rightIcon} className={cx('icon')} />}
+      {rightIcon && <img src={rightIcon.url} alt={rightIcon.alt} className={cx('icon')} />}
     </Comp>
   );
 }

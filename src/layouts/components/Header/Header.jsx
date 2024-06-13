@@ -3,8 +3,12 @@ import { useState } from 'react';
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 import images from '~/assets/images';
+import { MENU_ITEM } from './constants';
+
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import WrapperPopper from '~/components/Popper';
+import Menu from '~/components/Popper/Menu';
 
 const cx = classNames.bind(styles);
 
@@ -40,7 +44,7 @@ function Header() {
             {/* Search Input */}
             <input
               type="text"
-              placeholder="Tìm kiếm"
+              placeholder="Search"
               className={cx('search-input')}
               value={search}
               onChange={handleSearchChange}
@@ -67,26 +71,35 @@ function Header() {
 
           {/* Search result */}
           <div className={cx('search-result')}>
-            <h4 className={cx('search-title')}>Accounts</h4>
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            <AccountItem />
-            {search && <div className={cx('view-all-results')}>View all results for "{search}"</div>}
+            <WrapperPopper noPaddingBottom>
+              <h4 className={cx('search-title')}>Accounts</h4>
+              <AccountItem />
+              <AccountItem />
+              <AccountItem />
+              <AccountItem />
+              <AccountItem />
+              <AccountItem />
+              <AccountItem />
+              <AccountItem />
+              <AccountItem />
+              <AccountItem />
+              <AccountItem />
+              <AccountItem />
+              {search && <div className={cx('view-all-results')}>View all results for "{search}"</div>}
+            </WrapperPopper>
           </div>
         </div>
 
         {/* Action */}
-        <div>
+        <div className={cx('action')}>
           <Button primary>Log in</Button>
+
+          {/* Kebab menu */}
+          <Menu items={MENU_ITEM} right marginTop="19px">
+            <div className={cx('kebab-menu')}>
+              <img src={images.ellipsisVertical.url} alt={images.ellipsisVertical.alt} className={cx('menu-icon')} />
+            </div>
+          </Menu>
         </div>
       </div>
     </header>

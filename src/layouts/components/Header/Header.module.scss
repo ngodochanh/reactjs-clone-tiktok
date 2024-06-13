@@ -1,3 +1,4 @@
+// wrapper
 .wrapper {
   position: fixed;
   left: 0;
@@ -9,6 +10,7 @@
   z-index: 1000;
 }
 
+// inner
 .inner {
   display: flex;
   justify-content: space-between;
@@ -26,6 +28,7 @@
   padding-right: var(--default-layout-horizontal-spacer);
 }
 
+// search
 .search {
   flex: 1 1 auto;
   max-width: 500px;
@@ -100,26 +103,10 @@
     position: absolute;
     top: 100%;
     left: 0;
-
+    margin-top: var(--spacing-8);
+    display: none;
     width: 100%;
     min-width: 250px;
-    max-height: min(-156px + 100vh, 734px);
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 12px;
-    border-radius: 8px;
-    margin-top: 8px;
-    padding-top: var(--spacing-8);
-    overscroll-behavior: contain;
-    overflow-y: scroll;
-    display: none;
-
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-      background-color: var(--text-color-opacity-6);
-    }
 
     .search-title {
       font-size: 1.4rem;
@@ -142,6 +129,33 @@
         background-color: var(--text-color-opacity-3);
         cursor: pointer;
       }
+    }
+  }
+}
+
+// action
+.action {
+  & > :not([hidden]) ~ :not([hidden]) {
+    margin-left: var(--spacing-16);
+  }
+
+  .kebab-menu {
+    display: inline-block;
+
+    &:has(.menu-icon:hover) .menu-popup {
+      display: block;
+    }
+
+    .menu-icon {
+      vertical-align: middle;
+      width: 28px;
+      padding-left: var(--spacing-4);
+      padding-right: var(--spacing-4);
+      cursor: pointer;
+    }
+
+    .menu-popup {
+      display: none;
     }
   }
 }
