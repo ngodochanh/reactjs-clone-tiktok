@@ -65,9 +65,9 @@ function Button({
 
   return (
     <Comp className={classes} {...passProps}>
-      {leftIcon && <img src={leftIcon.url} alt={leftIcon.alt} className={cx('icon')} />}
+      {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
       <span className={cx('title')}>{children}</span>
-      {rightIcon && <img src={rightIcon.url} alt={rightIcon.alt} className={cx('icon')} />}
+      {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
     </Comp>
   );
 }

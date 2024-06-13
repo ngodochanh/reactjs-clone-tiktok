@@ -3,6 +3,10 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
+/**
+ * children: wrapper menu popup
+ * noPaddingBottom: có padding bottom không
+ */
 function WrapperPopper({ children, noPaddingBottom = false }) {
   const classes = cx('wrapper', { noPaddingBottom });
 

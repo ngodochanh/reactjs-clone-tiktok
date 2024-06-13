@@ -1,48 +1,13 @@
-const images = {
-  logo: {
-    url: require('~/assets/images/logo.svg').default,
-    alt: 'TikTok',
-  },
-  close: {
-    url: require('~/assets/images/close.svg').default,
-    alt: 'Close',
-  },
-  spinner: {
-    url: require('~/assets/images/spinner.svg').default,
-    alt: 'Spinner',
-  },
-  find: {
-    url: require('~/assets/images/find.svg').default,
-    alt: 'Find',
-  },
-  verified: {
-    url: require('~/assets/images/verified.svg').default,
-    alt: 'Verified',
-  },
-  ellipsisVertical: {
-    url: require('~/assets/images/ellipsis-vertical.svg').default,
-    alt: 'Ellipsis Vertical',
-  },
-  idea: {
-    url: require('~/assets/images/idea.svg').default,
-    alt: 'Idea',
-  },
-  languages: {
-    url: require('~/assets/images/languages.svg').default,
-    alt: 'Languages',
-  },
-  feedback: {
-    url: require('~/assets/images/feedback.svg').default,
-    alt: 'Feedback',
-  },
-  keyboard: {
-    url: require('~/assets/images/keyboard.svg').default,
-    alt: 'Keyboard',
-  },
-  darkMode: {
-    url: require('~/assets/images/dark-mode.svg').default,
-    alt: 'Dark Mode',
-  },
-};
+import { ReactComponent as Logo } from '~/assets/images/logo.svg';
+import { ReactComponent as Close } from '~/assets/images/close.svg';
+import { ReactComponent as Spinner } from '~/assets/images/spinner.svg';
+import { ReactComponent as Find } from '~/assets/images/find.svg';
+import { ReactComponent as Verified } from '~/assets/images/verified.svg';
+import { ReactComponent as EllipsisVertical } from '~/assets/images/ellipsis-vertical.svg';
+import { ReactComponent as Idea } from '~/assets/images/idea.svg';
+import { ReactComponent as Languages } from '~/assets/images/languages.svg';
+import { ReactComponent as Keyboard } from '~/assets/images/keyboard.svg';
+import { ReactComponent as Feedback } from '~/assets/images/feedback.svg';
+import { ReactComponent as DarkMode } from '~/assets/images/dark-mode.svg';
 
-export default images;
+export { Logo, Close, Spinner, Find, Verified, EllipsisVertical, Idea, Languages, Keyboard, Feedback, DarkMode };

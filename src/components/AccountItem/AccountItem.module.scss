@@ -5,13 +5,14 @@
   grid-template-columns: 40px 1fr;
   grid-template-rows: 40px;
   column-gap: var(--spacing-16);
-  padding: var(--spacing-8) var(--spacing-16);
+  padding: 9px var(--spacing-16);
 
   &:hover {
     background-color: var(--text-color-opacity-3);
     cursor: pointer;
   }
 
+  // Avatar
   .avatar {
     img {
       width: 100%;
@@ -20,11 +21,14 @@
     }
   }
 
+  // Info
   .info {
     overflow: hidden;
 
+    // Username
     .username {
       display: flex;
+      align-items: baseline;
       column-gap: var(--spacing-8);
 
       h5 {
@@ -37,8 +41,13 @@
         text-overflow: ellipsis;
         white-space: nowrap;
       }
+
+      svg {
+        font-size: 1.4rem;
+      }
     }
 
+    // Nickname
     .nickname {
       width: 100%;
       font-size: 1.4rem;
