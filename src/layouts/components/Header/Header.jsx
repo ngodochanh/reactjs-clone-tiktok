@@ -7,8 +7,7 @@ import { MENU_ITEM } from './constants';
 
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
-import WrapperPopper from '~/components/Popper';
-import Menu from '~/components/Popper/Menu';
+import { MenuItem, WrapperPopper } from '~/components/Popper';
 
 const cx = classNames.bind(styles);
 
@@ -95,11 +94,19 @@ function Header() {
           <Button primary>Log in</Button>
 
           {/* Kebab menu */}
-          <Menu items={MENU_ITEM} right marginTop="19px">
-            <div className={cx('kebab-menu')}>
-              <img src={images.ellipsisVertical.url} alt={images.ellipsisVertical.alt} className={cx('menu-icon')} />
+          <div className={cx('kebab-menu')}>
+            {/* Menu icon */}
+            <img src={images.ellipsisVertical.url} alt={images.ellipsisVertical.alt} className={cx('menu-icon')} />
+
+            {/* Menu popup */}
+            <div className={cx('menu-popup')}>
+              <WrapperPopper>
+                {MENU_ITEM.map((item) => (
+                  <MenuItem key={item.id} item={item} />
+                ))}
+              </WrapperPopper>
             </div>
-          </Menu>
+          </div>
         </div>
       </div>
     </header>

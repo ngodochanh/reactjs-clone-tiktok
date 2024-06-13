@@ -57,7 +57,7 @@
     }
 
     .search-input {
-      width: calc(100% - var(--btn-width) - (var(--search-status-horizontal-spacer) * 2) - var(--svg-width));
+      flex-grow: 1;
       background-color: transparent;
       caret-color: var(--primary);
       font-weight: 400;
@@ -140,22 +140,85 @@
   }
 
   .kebab-menu {
-    display: inline-block;
-
-    &:has(.menu-icon:hover) .menu-popup {
-      display: block;
-    }
+    display: inline-flex;
+    vertical-align: middle;
+    position: relative;
 
     .menu-icon {
-      vertical-align: middle;
       width: 28px;
       padding-left: var(--spacing-4);
       padding-right: var(--spacing-4);
       cursor: pointer;
     }
 
-    .menu-popup {
-      display: none;
+    .menu-icon:hover ~ .menu-popup,
+    .menu-popup:hover {
+      opacity: 1;
+      visibility: visible;
+      animation: fadeIn 0s forwards;
     }
+
+    .menu-popup {
+      position: absolute;
+      top: 100%;
+      margin-top: 19px;
+      right: calc(var(--spacing-8) * -1);
+      width: 100%;
+      min-width: 223px;
+      opacity: 0;
+      visibility: hidden;
+      animation: fadeOut 0.7s forwards;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        right: var(--spacing-8);
+        top: -19px;
+
+        width: 15%;
+        height: 10%;
+        background-color: transparent;
+      }
+
+      &::after {
+        --width: 10px;
+
+        content: '';
+        display: block;
+        position: absolute;
+        top: calc((var(--width) - 1px) * -1);
+        right: var(--spacing-12);
+
+        border-bottom: var(--width) solid var(--white);
+        border-left: var(--width) solid transparent;
+        border-right: var(--width) solid transparent;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
   }
 }
