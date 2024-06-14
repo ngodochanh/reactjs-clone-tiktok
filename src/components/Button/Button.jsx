@@ -63,8 +63,20 @@ function Button({
     [className]: className,
   });
 
+  // Gắn thuộc tính to hoặc href nếu cần thiết
+  const props = {
+    ...passProps,
+    className: classes,
+  };
+
+  if (to) {
+    props.to = to; // Gắn thuộc tính 'to' nếu sử dụng Link
+  } else if (href) {
+    props.href = href; // Gắn thuộc tính 'href' nếu sử dụng thẻ a
+  }
+
   return (
-    <Comp className={classes} {...passProps}>
+    <Comp className={classes} {...props}>
       {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
       <span className={cx('title')}>{children}</span>
       {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}

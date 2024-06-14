@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
@@ -14,6 +14,29 @@ const cx = classNames.bind(styles);
 function Header() {
   // State để lưu trữ nội dung Search
   const [search, setSearch] = useState('');
+  const [menuItems, setMenuItems] = useState([]);
+
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setMenuItems(MENU_ITEM);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Hàm xử lý khi một mục menu được nhấn (parentMenu là cha của item)
+  const handleMenuClick = (item, parentMenu) => {
+    switch (item.type) {
+      case 'languages': // Xử lý thay đổi ngôn ngữ
+        parentMenu.data.splice(parentMenu.data.indexOf(item), 1);
+        parentMenu.data.unshift(item);
+
+        setMenuItems([...menuItems]);
+        break;
+      default:
+      // Xử lý các loại khác
+    }
+  };
 
   // Hàm xử lý khi nội dung Search thay đổi
   const handleSearchChange = (e) => {
@@ -88,11 +111,18 @@ function Header() {
           <Button primary>Log in</Button>
 
           {/* Kebab menu */}
-          <Menu menuList={MENU_ITEM} menuClassName={cx('kebab-menu')} menuPopupClassName={cx('menu-popup')}>
-            <div className={cx('menu-icon')}>
-              <EllipsisVertical />
-            </div>
-          </Menu>
+          {menuItems.length > 0 && (
+            <Menu
+              menuList={menuItems}
+              menuClassName={cx('kebab-menu')}
+              menuPopupClassName={cx('menu-popup')}
+              onClick={handleMenuClick}
+            >
+              <div className={cx('menu-icon')}>
+                <EllipsisVertical />
+              </div>
+            </Menu>
+          )}
         </div>
       </div>
     </header>

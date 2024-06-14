@@ -9,5 +9,19 @@ import { ReactComponent as Languages } from '~/assets/images/languages.svg';
 import { ReactComponent as Keyboard } from '~/assets/images/keyboard.svg';
 import { ReactComponent as Feedback } from '~/assets/images/feedback.svg';
 import { ReactComponent as DarkMode } from '~/assets/images/dark-mode.svg';
+import { ReactComponent as ChevronLeft } from '~/assets/images/chevron-left.svg';
 
-export { Logo, Close, Spinner, Find, Verified, EllipsisVertical, Idea, Languages, Keyboard, Feedback, DarkMode };
+export {
+  Logo,
+  Close,
+  Spinner,
+  Find,
+  Verified,
+  EllipsisVertical,
+  Idea,
+  Languages,
+  Keyboard,
+  Feedback,
+  DarkMode,
+  ChevronLeft,
+};
