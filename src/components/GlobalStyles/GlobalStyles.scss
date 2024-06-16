@@ -1,26 +1,54 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
 
-$primary: #fe2c55;
-$text-color: #161823;
-$white: #ffffff;
-
+$primary: rgb(254, 44, 85);
+$black: rgb(22, 24, 35);
+$almost-black: rgb(18, 18, 18);
+$dark-gray: rgb(37, 37, 37);
+$white: rgb(255, 255, 255);
 $border-radius: 92px;
+
+[data-theme='dark'] {
+  --text-color: #{rgba($white, 0.9)};
+  --background-color-wrapper: #{$dark-gray};
+  --background-hover-menu-item: var(--text-color-opacity-4);
+  --background-color-scrollbar-thumb: var(--text-color-opacity-8);
+  --text-color-body: #000;
+
+  // Color opacity
+  --text-color-opacity-2: #{rgba($white, 0.02)};
+  --text-color-opacity-3: #{rgba($white, 0.03)};
+  --text-color-opacity-4: #{rgba($white, 0.04)};
+  --text-color-opacity-6: #{rgba($white, 0.06)};
+  --text-color-opacity-8: #{rgba($white, 0.08)};
+  --text-color-opacity-50: #{rgba($white, 0.5)};
+  --text-color-opacity-120: #{rgba($white, 0.12)};
+  --text-color-opacity-160: #{rgba($white, 0.16)};
+  --text-color-opacity-340: #{rgba($white, 0.34)};
+}
 
 :root {
   --primary: #{$primary};
-  --text-color: #{$text-color};
+  --text-color: #{$black};
+  --black: #{$black};
   --white: #{$white};
+  --almost-black: #{$almost-black};
+  --border-radius: #{$border-radius};
+  --background-color-wrapper: #{$white};
+  --background-hover-menu-item: var(--text-color-opacity-3);
+  --background-color-scrollbar-thumb: var(--text-color-opacity-6);
+  --text-color-body: #{$white};
 
   // Color opacity
   --primary-opacity-6: #{rgba($primary, 0.06)};
 
-  --text-color-opacity-2: #{rgba($text-color, 0.02)};
-  --text-color-opacity-3: #{rgba($text-color, 0.03)};
-  --text-color-opacity-6: #{rgba($text-color, 0.06)};
-  --text-color-opacity-50: #{rgba($text-color, 0.5)};
-  --text-color-opacity-120: #{rgba($text-color, 0.12)};
-  --text-color-opacity-340: #{rgba($text-color, 0.34)};
+  --text-color-opacity-2: #{rgba($black, 0.02)};
+  --text-color-opacity-3: #{rgba($black, 0.03)};
+  --text-color-opacity-6: #{rgba($black, 0.06)};
+  --text-color-opacity-50: #{rgba($black, 0.5)};
+  --text-color-opacity-120: #{rgba($black, 0.12)};
+  --text-color-opacity-160: #{rgba($black, 0.16)};
+  --text-color-opacity-340: #{rgba($black, 0.34)};
 
   // Spacing
   --spacing-4: 4px;
@@ -35,13 +63,13 @@ $border-radius: 92px;
   --default-layout-horizontal-spacer: var(--spacing-16);
   --default-layout-max-width: calc(var(--default-layout-horizontal-spacer) + 1900px);
   --default-layout-min-width: calc(var(--default-layout-horizontal-spacer) + 608px);
+
   // Header
   --header-height: 60px;
+
   // Sidebar
   --sidebar-max-width: 240px;
   --sidebar-min-width: 72px;
-
-  --border-radius: #{$border-radius};
 
   @media screen and (min-width: 768px) {
     --default-layout-horizontal-spacer: var(--spacing-24);
@@ -66,6 +94,7 @@ body {
   font-weight: 400;
   text-rendering: optimizeSpeed;
   color: var(--text-color);
+  background-color: var(--text-color-body);
 }
 
 button,
@@ -80,4 +109,19 @@ input,
 a[href] {
   text-decoration: none;
   color: var(--text-color);
+}
+
+html *::-webkit-scrollbar {
+  border-radius: 0;
+  width: var(--spacing-8);
+}
+
+html *::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: var(--background-color-scrollbar-thumb);
+}
+
+html *::-webkit-scrollbar-track {
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0);
 }

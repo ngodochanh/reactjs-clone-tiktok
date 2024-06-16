@@ -10,13 +10,13 @@ const cx = classNames.bind(styles);
  * onClick: Hàm xử lý khi một mục menu được nhấn
  */
 function MenuItem({ item, compact = false, onClick }) {
-  console.log(compact);
   const classes = cx('menu-item', {
     'menu-item-compact': compact,
   });
 
+  // item.component: là toggle dark mode (kiểu giống vậy)
   return (
-    <Button leftIcon={item.icon} to={item.to} text className={classes} onClick={onClick}>
+    <Button leftIcon={item.icon} rightIcon={item.component} to={item.to} text className={classes} onClick={onClick}>
       {item.title}
     </Button>
   );

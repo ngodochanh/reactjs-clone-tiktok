@@ -13,6 +13,8 @@
   min-width: 100px;
   user-select: none;
   cursor: pointer;
+  color: var(--text-color);
+  position: relative;
 
   + .wrapper {
     margin-left: var(--spacing-8);

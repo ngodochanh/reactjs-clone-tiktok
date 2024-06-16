@@ -6,16 +6,7 @@
   padding-bottom: var(--spacing-8);
   overscroll-behavior: contain;
   overflow-y: auto;
-  background-color: var(--white);
-
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: var(--spacing-4);
-    background-color: var(--text-color-opacity-6);
-  }
+  background-color: var(--background-color-wrapper);
 }
 
 // Không có padding top

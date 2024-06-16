@@ -14,10 +14,12 @@ const cx = classNames.bind(styles);
 function Header() {
   // State để lưu trữ nội dung Search
   const [search, setSearch] = useState('');
+  // State để lưu trữ mảng Menu Item
   const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
     let timer = setTimeout(() => {
+      // Gắn mảng Menu Item
       setMenuItems(MENU_ITEM);
     }, 1000);
 
@@ -57,7 +59,7 @@ function Header() {
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
         {/* Logo */}
-        <Logo />
+        <Logo className={cx('logo')} />
 
         {/* Search */}
         <div className={cx('search')}>
@@ -118,9 +120,7 @@ function Header() {
               menuPopupClassName={cx('menu-popup')}
               onClick={handleMenuClick}
             >
-              <div className={cx('menu-icon')}>
-                <EllipsisVertical />
-              </div>
+              <EllipsisVertical className={cx('menu-icon')} />
             </Menu>
           )}
         </div>

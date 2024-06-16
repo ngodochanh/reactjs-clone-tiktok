@@ -1,4 +1,5 @@
 import { DarkMode, Feedback, Idea, Keyboard, Languages } from '~/assets/images';
+import Toggle from './DarkMode/Toggle';
 
 const MENU_ITEM = [
   { id: 'header-idea', icon: <Idea />, title: 'LIVE Creator Hub', to: '/live/creator' },
@@ -17,7 +18,7 @@ const MENU_ITEM = [
   },
   { id: 'header-feedback', icon: <Feedback />, title: 'Feedback and help', to: '/feedback' },
   { id: 'header-keyboard', icon: <Keyboard />, title: 'Keyboard shortcuts' },
-  { id: 'header-darkMode', icon: <DarkMode />, title: 'Dark mode' },
+  { id: 'header-darkMode', icon: <DarkMode />, title: 'Dark mode', component: <Toggle /> },
 ];
 
 export { MENU_ITEM };

@@ -1,0 +1,47 @@
+[data-theme='dark'] {
+  --background-color-toggle: #0be09b;
+  --background-color-hover: linear-gradient(0deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)), rgb(11, 224, 155);
+}
+
+[data-theme='light'] {
+  --background-color-toggle: var(--text-color-opacity-120);
+  --background-color-hover: var(--text-color-opacity-160);
+}
+
+.wrapper {
+  --height-wrapper: 24px;
+
+  background-color: var(--background-color-toggle);
+  height: var(--height-wrapper);
+  width: calc(var(--height-wrapper) * 2);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+
+  position: absolute;
+  right: calc(var(--spacing-8));
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+
+  &:hover {
+    background: var(--background-color-hover);
+  }
+
+  &::before {
+    content: '';
+    width: var(--height-wrapper);
+    height: var(--height-wrapper);
+    border-radius: 50%;
+    background-color: var(--white);
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: scale(0.8332);
+    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+  }
+
+  &.active::before {
+    left: var(--height-wrapper);
+  }
+}
