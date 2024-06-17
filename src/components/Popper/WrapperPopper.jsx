@@ -4,8 +4,13 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 /**
- * children: wrapper menu popup
- * noPaddingBottom: có padding bottom không
+ * Component WrapperPopper
+ *
+ * Props:
+ * - children: Wrapper menu popup
+ * - noPaddingBottom: Có padding bottom không
+ *
+ * Lưu ý: menuClassName và menuPopupClassName để custom lại các vị trí
  */
 function WrapperPopper({ children, noPaddingBottom = false }) {
   const classes = cx('wrapper', { noPaddingBottom });

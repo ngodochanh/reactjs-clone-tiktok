@@ -1,26 +1,40 @@
 import WrapperPopper from '~/components/Popper';
 import styles from './Menu.module.scss';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import HeaderMenu from './HeaderMenu';
 import MenuItem from './MenuItem';
 
 const cx = classNames.bind(styles);
 
 /**
- * children: Nút để hover hiển thị danh sách
- * menuList: Mảng danh sách menu
- * menuClassName: class thẻ wrapper (nút hover và danh sách)
- * menuPopupClassName: class thẻ danh sách
- * onClick: Hàm xử lý khi một mục menu được nhấn
+ * Component Menu
+ *
+ * Props:
+ * - children: Nút để hover hiển thị danh sách
+ * - menuList: Mảng danh sách menu
+ * - menuClassName: class thẻ wrapper (nút hover và danh sách)
+ * - menuPopupClassName: class thẻ danh sách
+ * - onClick: Hàm xử lý khi một mục menu được nhấn
  *
  * Lưu ý: menuClassName và menuPopupClassName để custom lại các vị trí
  */
 function Menu({ children, menuList = [], menuClassName, menuPopupClassName, onClick = () => {} }) {
+  // Ref để lưu trữ tham chiếu đến phần tử menu-popup
+  const menuPopupRef = useRef();
   // State lưu trữ các trạng thái của menu để điều hướng qua các mục con
   const [menuStack, setMenuStack] = useState([{ data: menuList }]);
   // Menu hiện tại được hiển thị, lấy từ phần tử cuối của menuStack
   const currentMenu = menuStack[menuStack.length - 1];
+
+  // Effect đặt lại menuStack về trạng thái ban đầu khi menuPopup ẩn đi
+  useEffect(() => {
+    menuPopupRef.current.addEventListener('mouseleave', () => {
+      setTimeout(() => {
+        setMenuStack([menuStack[0]]);
+      }, 700); // Thời gian phù hợp với animation fadeOut trong CSS (class .menu-popup )
+    });
+  }, []);
 
   // Xử lý khi một mục menu được nhấn
   const handleItemClick = (item) => {
@@ -57,7 +71,7 @@ function Menu({ children, menuList = [], menuClassName, menuPopupClassName, onCl
       <section className={cx('dropdown-menu')}>{children}</section>
 
       {/* Danh sách */}
-      <section className={menuPopupClass}>
+      <section className={menuPopupClass} ref={menuPopupRef}>
         <WrapperPopper>
           {/* Header menu */}
           {currentMenu?.label && <HeaderMenu label={currentMenu?.label} onBack={handleBackClick} />}

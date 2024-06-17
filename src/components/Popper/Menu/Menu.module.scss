@@ -15,7 +15,7 @@
   .menu-popup:hover {
     opacity: 1;
     visibility: visible;
-    animation: fadeIn 0s forwards;
+    animation: fadeIn 0s ease-in;
   }
 
   // Danh sách
@@ -26,7 +26,7 @@
     min-width: 223px;
     opacity: 0;
     visibility: hidden;
-    animation: fadeOut 0.7s forwards;
+    animation: fadeOut 0.7s ease-in;
 
     // Cầu nối khi hover
     &::before {
