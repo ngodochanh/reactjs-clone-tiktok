@@ -96,20 +96,24 @@ function Header() {
             <WrapperPopper noPaddingBottom>
               <h4 className={cx('search-title')}>Accounts</h4>
               <AccountItem
-                avatarImage="https://i.pinimg.com/564x/54/47/e7/5447e7457f0d71b51408b13a1ecdb76d.jpg"
+                avatarImage="https://i.pinimg.com/564x/54/47/e7/547e7457f0d71b51408b13a1ecdb76d.jpg"
+                fallBack="https://i.pinimg.com/564x/4d/22/9f/4d229f0d14869d3e955bf973042aff59.jpg"
                 verified
               />
+              <AccountItem avatarImage="https://i.pinimg.com/564x/54/47/e7/5447e7457f0d71b51408b13a1ecdb7d.jpg" />
               <AccountItem avatarImage="https://i.pinimg.com/564x/54/47/e7/5447e7457f0d71b51408b13a1ecdb76d.jpg" />
               <AccountItem avatarImage="https://i.pinimg.com/564x/54/47/e7/5447e7457f0d71b51408b13a1ecdb76d.jpg" />
-              <AccountItem avatarImage="https://i.pinimg.com/564x/54/47/e7/5447e7457f0d71b51408b13a1ecdb76d.jpg" />
-              <AccountItem avatarImage="https://i.pinimg.com/564x/54/47/e7/5447e7457f0d71b51408b13a1ecdb76d.jpg" />
+              <AccountItem
+                avatarImage="https://i.pinimg.com/564x/54/47/e7/5447e7457f0d71b51408b13a1ecdb76d.jpg"
+                fallBack="https://i.pinimg.com/564x/4d/22/9f/4d229f0d14869d3e955bf973042aff59.jpg"
+              />
               <AccountItem
                 avatarImage="https://i.pinimg.com/564x/54/47/e7/5447e7457f0d71b51408b13a1ecdb76d.jpg"
                 verified
               />
               <AccountItem avatarImage="https://i.pinimg.com/564x/54/47/e7/5447e7457f0d71b51408b13a1ecdb76d.jpg" />
               <AccountItem
-                avatarImage="https://i.pinimg.com/564x/54/47/e7/5447e7457f0d71b51408b13a1ecdb76d.jpg"
+                avatarImage="https://i.pinimg.com/564x/54/47/e75447e7457f0d71b51408b13a1ecdb76d.jpg"
                 verified
               />
               <AccountItem

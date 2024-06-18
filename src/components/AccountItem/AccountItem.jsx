@@ -1,4 +1,4 @@
-import { Verified } from '~/assets/images';
+import images, { Verified } from '~/assets/images';
 import styles from './AccountItem.module.scss';
 import classNames from 'classnames/bind';
 import UserAvatar from '../UserAvatar';
@@ -11,6 +11,7 @@ const cx = classNames.bind(styles);
  * Props:
  * - avatarImage: Hình ảnh
  * - avatarAlt: Mô tả hình ảnh
+ * - fallBack: Nếu đường dẫn hình ảnh lỗi thì lấy hình ảnh này
  * - username
  * - nickname
  * - verified: tích xanh
@@ -18,6 +19,7 @@ const cx = classNames.bind(styles);
 function AccountItem({
   avatarImage,
   avatarAlt = 'avatar',
+  fallBack,
   username = 'hamburger_food',
   nickname = 'hamburger',
   verified = false,
@@ -25,7 +27,7 @@ function AccountItem({
   return (
     <article className={cx('wrapper')}>
       {/* Avatar */}
-      <UserAvatar avatarImage={avatarImage} avatarAlt={avatarAlt} medium />
+      <UserAvatar avatarImage={avatarImage} avatarAlt={avatarAlt} fallBack={fallBack} medium />
 
       {/* Info */}
       <section className={cx('info')}>

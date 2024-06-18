@@ -20,6 +20,12 @@ import { ReactComponent as Plus } from '~/assets/images/plus.svg';
 import { ReactComponent as Send } from '~/assets/images/send.svg';
 import { ReactComponent as Inbox } from '~/assets/images/inbox.svg';
 
+const images = {
+  noProfileImage: require('~/assets/images/noProfileImage.jpeg'),
+};
+
+export default images;
+
 export {
   Logo,
   Close,
