@@ -1,13 +1,10 @@
 .menu {
   display: inline-flex;
-  vertical-align: middle;
   position: relative;
 
   // Hover vào thì hiển thị danh sách
   .dropdown-menu {
     cursor: pointer;
-    padding-left: var(--spacing-4);
-    padding-right: var(--spacing-4);
   }
 
   // Hiện thị menu popup
@@ -21,7 +18,7 @@
   // Danh sách
   .menu-popup {
     position: absolute;
-
+    margin-top: var(--spacing-8);
     width: 100%;
     min-width: 223px;
     opacity: 0;
@@ -76,7 +73,6 @@
       margin-left: 0;
       padding: var(--spacing-8) var(--spacing-8) var(--spacing-8) var(--spacing-16);
       border-radius: 0px;
-      font-weight: 600;
 
       &:hover {
         text-decoration: none;
@@ -84,17 +80,21 @@
       }
 
       // Dùng cho các mục menu nhỏ gọn hơn
-      &-compact {
-        font-size: 1.4rem;
-        padding-left: var(--spacing-24);
-        height: 38px;
-        font-weight: 500;
+    }
 
-        &:first-of-type,
-        &:hover {
-          background-color: var(--text-color-opacity-6);
-        }
+    .compact {
+      font-size: 1.4rem;
+      padding-left: var(--spacing-24);
+      height: 38px;
+      font-weight: 500;
+
+      &:first-of-type,
+      &:hover {
+        background-color: var(--text-color-opacity-6);
       }
+    }
+    .separator {
+      border-top: 1px solid var(--text-color-opacity-120);
     }
   }
 }

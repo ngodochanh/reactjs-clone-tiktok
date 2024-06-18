@@ -1,0 +1,43 @@
+/*
+----- Size ----
+Tiny
+Small
+Petite
+Medium
+Average
+Large
+Big
+Oversized
+Miniature
+Massive
+*/
+
+.wrapper {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+// Size btn
+.small {
+  --width: 32px;
+  width: var(--width);
+  height: var(--width);
+}
+
+.medium {
+  --width: 40px;
+  width: var(--width);
+  height: var(--width);
+}
+
+.average {
+  --width: 48px;
+  width: var(--width);
+  height: var(--width);
+}
+
+.large {
+  --width: 166px;
+  width: var(--width);
+  height: var(--width);
+}

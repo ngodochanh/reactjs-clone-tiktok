@@ -1,0 +1,99 @@
+.wrapper {
+  --background-color: rgba(84, 84, 84, 0.92);
+  --width-bridge: 20px; // height cầu nối
+
+  position: relative;
+  font-size: 2.6rem;
+  z-index: 10;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
+  &:hover .text {
+    display: block;
+  }
+}
+
+// Text
+.text {
+  position: absolute;
+
+  font-size: 1.6rem;
+  color: var(--white);
+  font-weight: 600;
+  border-radius: var(--spacing-8);
+  padding: var(--spacing-6) var(--spacing-10);
+  background-color: var(--background-color);
+  user-select: none;
+  cursor: default;
+  display: none;
+
+  // Tam giác ở đầu
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+  }
+
+  // Cầu nối
+  &::before {
+    content: '';
+    display: block;
+
+    position: absolute;
+    width: var(--width-bridge);
+    height: var(--width-bridge);
+  }
+}
+
+// Hướng của tooltip
+.bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: var(--spacing-8);
+
+  &::after {
+    left: 50%;
+    transform: translateX(-50%);
+    --width: 10px;
+
+    top: calc((var(--width) - 1px) * -1);
+
+    border-bottom: var(--width) solid var(--background-color);
+    border-left: var(--width) solid transparent;
+    border-right: var(--width) solid transparent;
+  }
+
+  &::before {
+    top: calc((var(--width-bridge) - 1px) * -1);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: var(--spacing-8);
+
+  &::after {
+    top: 50%;
+    transform: translateY(-50%);
+    --width: 8px;
+
+    left: calc((var(--width)) * -1);
+
+    border-right: var(--width) solid var(--background-color);
+    border-bottom: var(--width) solid transparent;
+    border-top: var(--width) solid transparent;
+  }
+
+  &::before {
+    left: calc((var(--width-bridge) - 1px) * -1);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

@@ -5,8 +5,11 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 /**
- * label: Tiêu đề
- * onBack: Hàm nhấn là quay trở lại menu trước
+ * Component HeaderMenu
+ *
+ * Props:
+ * - label: Tiêu đề
+ * - onBack: Hàm nhấn là quay trở lại menu trước
  */
 function HeaderMenu({ label, onBack }) {
   return (

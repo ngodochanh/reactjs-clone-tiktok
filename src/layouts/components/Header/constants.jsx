@@ -1,11 +1,23 @@
-import { DarkMode, Feedback, Idea, Keyboard, Languages } from '~/assets/images';
+import {
+  Coin,
+  DarkMode,
+  Favorite,
+  Feedback,
+  Idea,
+  Keyboard,
+  Language,
+  LogOut,
+  Profile,
+  Setting,
+  Studio,
+} from '~/assets/images';
 import Toggle from './DarkMode/Toggle';
 
-const MENU_ITEM = [
+const MENU_ITEMS = [
   { id: 'header-idea', icon: <Idea />, title: 'LIVE Creator Hub', to: '/live/creator' },
   {
     id: 'header-languages',
-    icon: <Languages />,
+    icon: <Language />,
     title: 'English',
     children: {
       label: 'Languages',
@@ -21,4 +33,19 @@ const MENU_ITEM = [
   { id: 'header-darkMode', icon: <DarkMode />, title: 'Dark mode', component: <Toggle /> },
 ];
 
-export { MENU_ITEM };
+const USER_MENU_ITEMS = [
+  { id: 'view-profile', icon: <Profile />, title: 'View profile', to: '/profile' },
+  { id: 'favorite', icon: <Favorite />, title: 'Favorites' },
+  { id: 'get-coin', icon: <Coin />, title: 'Get Coins', to: '/coin' },
+  { id: 'setting', icon: <Setting />, title: 'Settings' },
+  { id: 'live-studio', icon: <Studio />, title: 'LIVE Studio', to: '/studio' },
+  ...MENU_ITEMS,
+  {
+    id: 'log-out',
+    icon: <LogOut />,
+    title: 'Log out',
+    separator: true, // đường phân cách giữa các mục trong Menu
+  },
+];
+
+export { MENU_ITEMS, USER_MENU_ITEMS };
