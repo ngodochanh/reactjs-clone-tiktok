@@ -1,20 +1,22 @@
-import images, { Verified } from '~/assets/images';
+import { Verified } from '~/assets/images';
 import styles from './AccountItem.module.scss';
 import classNames from 'classnames/bind';
-import UserAvatar from '../UserAvatar';
+import UserAvatar from '~/components/UserAvatar';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 /**
  * Component AccountItem
  *
- * Props:
- * - avatarImage: Hình ảnh
- * - avatarAlt: Mô tả hình ảnh
- * - fallBack: Nếu đường dẫn hình ảnh lỗi thì lấy hình ảnh này
- * - username
- * - nickname
- * - verified: tích xanh
+ * @param {object} props - Các thuộc tính của component.
+ * @param {string} props.avatarImage - Đường dẫn hình ảnh của người dùng.
+ * @param {string} [props.avatarAlt='avatar'] - Mô tả hình ảnh người dùng (mặc định là 'avatar').
+ * @param {string} props.fallBack - Hình ảnh dự phòng nếu đường dẫn hình ảnh lỗi.
+ * @param {string} [props.username='hamburger_food'] - Tên người dùng hiển thị (mặc định là 'hamburger_food').
+ * @param {string} [props.nickname='hamburger'] - Bí danh của người dùng.
+ * @param {boolean} [props.verified=false] - Trạng thái xác nhận của người dùng (mặc định là false).
+ * @returns {JSX.Element} - JSX của component AccountItem.
  */
 function AccountItem({
   avatarImage,
@@ -25,7 +27,7 @@ function AccountItem({
   verified = false,
 }) {
   return (
-    <article className={cx('wrapper')}>
+    <Link to={`/@${nickname}`} className={cx('wrapper')}>
       {/* Avatar */}
       <UserAvatar avatarImage={avatarImage} avatarAlt={avatarAlt} fallBack={fallBack} medium />
 
@@ -40,7 +42,7 @@ function AccountItem({
         {/* Nickname */}
         <p className={cx('nickname')}>{nickname}</p>
       </section>
-    </article>
+    </Link>
   );
 }
 

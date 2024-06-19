@@ -5,21 +5,21 @@ import Upload from '~/pages/Upload';
 import { HeaderOnly } from '~/layouts';
 
 /**
- * layout:
- *        - không có layout thì mặc định là DefaultLayout
- *        - layout là null: thì không có layout
- *        - layout có giá trị: thì layout là đặc biệt (được truyền vào)
+ * Các chú thích về layout:
+ *        - Nếu không có layout được chỉ định, mặc định sẽ sử dụng DefaultLayout.
+ *        - Nếu layout là null: sẽ không có layout.
+ *        - Nếu layout có giá trị: sẽ sử dụng layout đặc biệt được truyền vào.
  */
 
-// Không đăng nhập vẫn xem được
+// Các route công khai (không cần đăng nhập vẫn có thể truy cập)
 const publicRoutes = [
-  { path: '/', component: Home },
-  { path: '/following', component: Following },
-  { path: '/profile', component: Profile },
-  { path: '/upload', component: Upload, layout: HeaderOnly },
+  { path: '/', component: Home }, // Route trang chủ
+  { path: '/following', component: Following }, // Route trang Following
+  { path: '/:nickname', component: Profile }, // Route trang Profile với tham số nickname
+  { path: '/upload', component: Upload, layout: HeaderOnly }, // Route trang Upload với layout đặc biệt là HeaderOnly
 ];
 
-// Đăng nhập mới xem được
+// Các route riêng tư (phải đăng nhập mới có thể truy cập)
 const privateRoutes = [];
 
 export { publicRoutes, privateRoutes };

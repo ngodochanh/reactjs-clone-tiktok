@@ -8,14 +8,15 @@ const cx = classNames.bind(styles);
 /**
  * Component UserAvatar
  *
- * Props:
- * - avatarImage: Hình ảnh
- * - avatarAlt: Mô tả hình ảnh
- * - fallBack: Hình ảnh lỗi nếu muốn theo từ ngoài vào (customs)
- * - small: 32px x 32px
- * - medium: 40px x 40px
- * - average: 48px x 48px
- * - large: 166px x 166px
+ * @param {string} avatarImage - Đường dẫn hình ảnh avatar.
+ * @param {string} avatarAlt - Mô tả hình ảnh avatar.
+ * @param {string} fallBack - Hình ảnh dự phòng nếu avatarImage không hợp lệ.
+ * @param {boolean} small - Kích thước nhỏ (32px x 32px).
+ * @param {boolean} medium - Kích thước trung bình (40px x 40px).
+ * @param {boolean} average - Kích thước trung bình (48px x 48px).
+ * @param {boolean} large - Kích thước lớn (166px x 166px).
+ *
+ * @returns {JSX.Element} - Component UserAvatar đã render.
  */
 function UserAvatar({
   avatarImage,
@@ -47,5 +48,4 @@ function UserAvatar({
     </figure>
   );
 }
-
 export default UserAvatar;

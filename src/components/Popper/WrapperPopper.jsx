@@ -6,11 +6,10 @@ const cx = classNames.bind(styles);
 /**
  * Component WrapperPopper
  *
- * Props:
- * - children: Wrapper menu popup
- * - noPaddingBottom: Có padding bottom không
+ * @param {React.ReactNode} children - Nội dung hoặc các thành phần con của WrapperPopper.
+ * @param {boolean} noPaddingBottom - Có sử dụng padding bottom hay không.
  *
- * Lưu ý: menuClassName và menuPopupClassName để custom lại các vị trí
+ * @returns {JSX.Element} - Component WrapperPopper đã render.
  */
 function WrapperPopper({ children, noPaddingBottom = false }) {
   const classes = cx('wrapper', { noPaddingBottom });

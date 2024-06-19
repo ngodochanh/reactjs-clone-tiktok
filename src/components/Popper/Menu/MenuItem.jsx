@@ -7,10 +7,11 @@ const cx = classNames.bind(styles);
 /**
  * Component MenuItem
  *
- * Props:
- * - item: Thông tin về item menu (để hiện thị menu-item)
- * - compact: Thêm lớp 'menu-item-compact'
- * - onClick: Hàm xử lý khi một mục menu được nhấn
+ * @param {object} item - Thông tin về item menu để hiển thị menu-item.
+ * @param {boolean} compact - Có sử dụng lớp 'menu-item-compact' hay không.
+ * @param {function} onClick - Hàm xử lý khi một mục menu được nhấn.
+ *
+ * @returns {JSX.Element} - Component MenuItem đã render.
  */
 function MenuItem({ item, compact = false, onClick }) {
   const classes = cx('menu-item', {

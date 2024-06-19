@@ -8,9 +8,12 @@ const cx = classNames.bind(styles);
 function DefaultLayout({ children }) {
   return (
     <div className={cx('wrapper')}>
+      {/* Header của trang */}
       <Header />
       <div className={cx('container')}>
+        {/* Sidebar điều hướng */}
         <Sidebar />
+        {/* Nội dung chính của trang */}
         <main className="content">{children}</main>
       </div>
     </div>

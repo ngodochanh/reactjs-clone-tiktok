@@ -7,9 +7,10 @@ const cx = classNames.bind(styles);
 /**
  * Component HeaderMenu
  *
- * Props:
- * - label: Tiêu đề
- * - onBack: Hàm nhấn là quay trở lại menu trước
+ * @param {string} label - Tiêu đề của header menu.
+ * @param {function} onBack - Hàm xử lý khi nhấn quay trở lại.
+ *
+ * @returns {JSX.Element} - Component HeaderMenu đã render.
  */
 function HeaderMenu({ label, onBack }) {
   return (

@@ -1,0 +1,147 @@
+[data-theme='dark'] {
+  --border-header-search-from: #595959;
+  --background-search-status: rgb(177 177 177 / 60%);
+  --background-search-from: var(--text-color-opacity-120);
+}
+
+[data-theme='light'] {
+  --border-header-search-from: #c5c6c9;
+  --background-search-status: var(--text-color-opacity-340);
+  --background-search-from: var(--text-color-opacity-6);
+}
+
+// Search from
+.search-form {
+  --btn-width: 52px;
+  --search-status-horizontal-spacer: var(--spacing-8);
+  --svg-width: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  height: 46px;
+  background-color: var(--background-search-from);
+  border-radius: var(--border-radius);
+  border: 1px solid transparent;
+  padding-left: var(--spacing-16);
+  overflow: hidden;
+
+  &:focus-within,
+  &:has(.search-input:hover) {
+    border-color: var(--border-header-search-from);
+  }
+
+  &:has(.search-input:focus) ~ .search-result {
+    display: block;
+  }
+
+  // Search input
+  .search-input {
+    flex: 1 1 auto;
+    width: 140px;
+    background-color: transparent;
+    caret-color: var(--primary);
+    font-weight: 500;
+    color: var(--text-color);
+
+    &:hover ~ .search-btn {
+      background-color: var(--text-color-opacity-6);
+    }
+
+    &:hover ~ .search-btn svg {
+      fill: var(--text-color);
+    }
+  }
+
+  .search-status {
+    margin-top: auto;
+    margin-bottom: auto;
+
+    .search-icon {
+      display: block;
+      margin-left: var(--search-status-horizontal-spacer);
+      margin-right: var(--search-status-horizontal-spacer);
+      color: var(--background-search-status);
+      cursor: pointer;
+
+      &-spinner {
+        animation: spinner 0.7s infinite linear;
+      }
+    }
+  }
+
+  // Search btn
+  .search-btn {
+    position: relative;
+    width: var(--btn-width);
+    cursor: pointer;
+    background-color: transparent;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 28px;
+      background-color: var(--text-color-opacity-120);
+
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+
+    svg {
+      fill: var(--text-color-opacity-340);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    --search-status-horizontal-spacer: var(--spacing-12);
+  }
+}
+
+// Search result
+.search-result {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: var(--spacing-8);
+  display: none;
+  width: 100%;
+  min-width: 250px;
+
+  &:hover {
+    display: block; // thêm vào để click user chứ không khi nhấn chuột thì nó ẩn (không nhấn được)
+  }
+
+  .search-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    height: 30px;
+    color: var(--text-color-opacity-50);
+    padding: 5px 12px;
+  }
+
+  .view-all-results {
+    font-weight: 600;
+    padding: var(--spacing-16);
+    text-align: center;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    &:hover {
+      background-color: var(--text-color-opacity-3);
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}

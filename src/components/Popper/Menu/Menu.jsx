@@ -10,14 +10,15 @@ const cx = classNames.bind(styles);
 /**
  * Component Menu
  *
- * Props:
- * - children: Nút để hover hiển thị danh sách
- * - menuList: Mảng danh sách menu
- * - menuClassName: class thẻ wrapper (nút hover và danh sách)
- * - menuPopupClassName: class thẻ danh sách
- * - onClick: Hàm xử lý khi một mục menu được nhấn
+ * @param {React.ReactNode} children - Nút để hover hiển thị danh sách.
+ * @param {Array} menuList - Mảng danh sách menu.
+ * @param {string} menuClassName - Tên lớp CSS cho wrapper của menu (nút hover và danh sách).
+ * @param {string} menuPopupClassName - Tên lớp CSS cho wrapper của danh sách menu.
+ * @param {function} onClick - Hàm xử lý khi một mục menu được nhấn.
  *
- * Lưu ý: menuClassName và menuPopupClassName để custom lại các vị trí
+ * @note menuClassName và menuPopupClassName để custom lại các vị trí.
+ *
+ * @returns {JSX.Element} - Component Menu đã render.
  */
 function Menu({ children, menuList = [], menuClassName, menuPopupClassName, onClick = () => {} }) {
   // Ref để lưu trữ tham chiếu đến phần tử menu-popup

@@ -20,7 +20,7 @@ const ButtonFactory = (props) => {
   return 'button'; // Mặc định là thẻ button
 };
 
-// Xóa các trình xử lý sự kiện nếu nút bị vô hiệu hóa
+// Hàm xóa xử lý sự kiện nếu nút bị vô hiệu hóa
 const removeEventsOnDisabled = (disabled, args) => {
   if (disabled) {
     Object.keys(args).forEach((key) => {
@@ -31,20 +31,39 @@ const removeEventsOnDisabled = (disabled, args) => {
   }
 };
 
+/**
+ * Component Button
+ *
+ * @param {React.ReactNode} children - Nội dung hoặc văn bản của nút.
+ * @param {React.ReactNode} leftIcon - Biểu tượng bên trái của nút.
+ * @param {React.ReactNode} rightIcon - Biểu tượng bên phải của nút.
+ * @param {string} to - Đích của liên kết React Router.
+ * @param {string} href - Đích của liên kết thẻ a.
+ * @param {boolean} rounded - Cho phép bo góc nút.
+ * @param {boolean} text - Nút chỉ hiển thị văn bản.
+ * @param {boolean} outline - Nút có kiểu viền.
+ * @param {boolean} primary - Nút chính.
+ * @param {boolean} disabled - Nút bị vô hiệu hóa.
+ * @param {boolean} large - Kích thước lớn của nút.
+ * @param {string} className - Tên lớp CSS bổ sung cho nút.
+ * @param {...any} passProps - Các props và xử lý sự kiện khác cho nút.
+ *
+ * @returns {JSX.Element} - Component nút đã render.
+ */
 function Button({
-  children, // Văn bản hoặc nội dung của nút
-  leftIcon, // Icon bên trái
-  rightIcon, // Icon bên phải
-  to, // Liên kết của React Router
-  href, // Liên kết thẻ a
-  rounded = false, // Góc bo tròn
-  text = false, // Nút chỉ có văn bản
-  outline = false, // Nút viền
-  primary = false, // Nút chính
-  disabled = false, // Trạng thái vô hiệu hóa
-  large = false, // Kích cỡ lớn
-  className, // Thêm tên class
-  ...passProps // Thêm các props và trình xử lý sự kiện khác
+  children,
+  leftIcon,
+  rightIcon,
+  to,
+  href,
+  rounded = false,
+  text = false,
+  outline = false,
+  primary = false,
+  disabled = false,
+  large = false,
+  className,
+  ...passProps
 }) {
   // Xóa các sự kiện nếu nút bị vô hiệu hóa
   removeEventsOnDisabled(disabled, passProps);
@@ -52,7 +71,7 @@ function Button({
   // Xác định loại thành phần
   let Comp = ButtonFactory({ to, href });
 
-  // Thiết lập tên class
+  // Thiết lập tên lớp CSS
   const classes = cx('wrapper', {
     rounded,
     text,
@@ -67,13 +86,9 @@ function Button({
   const props = {
     ...passProps,
     className: classes,
+    ...(to && { to }), // Thiết lập 'to' nếu sử dụng Link
+    ...(href && { href }), // Thiết lập 'href' nếu sử dụng thẻ a
   };
-
-  if (to) {
-    props.to = to; // Gắn thuộc tính 'to' nếu sử dụng Link
-  } else if (href) {
-    props.href = href; // Gắn thuộc tính 'href' nếu sử dụng thẻ a
-  }
 
   return (
     <Comp className={classes} {...props}>
