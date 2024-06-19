@@ -5,6 +5,7 @@ import { WrapperPopper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { Close, Find, Spinner } from '~/assets/images';
 import { useDebounce } from '~/hooks';
+import * as searchServices from '~/apiServices/searchServices';
 
 const cx = classNames.bind(styles);
 
@@ -30,15 +31,10 @@ function Search() {
   // Hàm gửi yêu cầu tìm kiếm
   const fetchSearchResults = async () => {
     setIsSearching(true);
-
     try {
-      // encodeURIComponent: Khi truyền dữ liệu gây hiểu nhầm cho url thì sẽ mã hóa để thành ký tự hợp lệ
-      const response = await fetch(
-        `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(query)}&type=less`,
-      );
-      const { data } = await response.json();
+      const result = await searchServices.searchUser(debouncedQuery);
 
-      setResults(data);
+      setResults(result);
     } catch (error) {
       setIsSearching(false); // Trường hợp bị lỗi cũng gọi để cho biết kết thúc tìm kiếm
     }
