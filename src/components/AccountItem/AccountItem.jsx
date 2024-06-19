@@ -1,4 +1,4 @@
-import { Verified } from '~/assets/images';
+import { Verified } from '~/assets/icons';
 import styles from './AccountItem.module.scss';
 import classNames from 'classnames/bind';
 import UserAvatar from '~/components/UserAvatar';
@@ -32,7 +32,7 @@ function AccountItem({
       <UserAvatar avatarImage={avatarImage} avatarAlt={avatarAlt} fallBack={fallBack} medium />
 
       {/* Info */}
-      <section className={cx('info')}>
+      <div className={cx('info')}>
         {/* Username */}
         <div className={cx('username')}>
           <h5>{username}</h5>
@@ -41,7 +41,7 @@ function AccountItem({
         </div>
         {/* Nickname */}
         <p className={cx('nickname')}>{nickname}</p>
-      </section>
+      </div>
     </Link>
   );
 }

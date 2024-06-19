@@ -3,9 +3,9 @@ import styles from './Search.module.scss';
 import classNames from 'classnames/bind';
 import { WrapperPopper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
-import { Close, Find, Spinner } from '~/assets/images';
+import { Close, Find, Spinner } from '~/assets/icons';
 import { useDebounce } from '~/hooks';
-import * as searchServices from '~/apiServices/searchServices';
+import * as searchServices from '~/services/searchService';
 
 const cx = classNames.bind(styles);
 
@@ -44,12 +44,8 @@ function Search() {
 
   // Xử lý khi nội dung tìm kiếm thay đổi
   const handleSearchChange = (e) => {
-    const value = e.target.value;
     // Không cho phép ký tự trắng đầu tiên
-    if (value === ' ' && query.length === 0) {
-      return;
-    }
-
+    const value = e.target.value.trimStart();
     setQuery(value);
   };
 
@@ -64,7 +60,7 @@ function Search() {
   const handleSubmitSearch = (e) => {
     e.preventDefault();
 
-    fetchSearchResults();
+    // fetchSearchResults();
   };
 
   return (

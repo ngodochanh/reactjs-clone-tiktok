@@ -12,6 +12,7 @@
   .menu-popup:hover {
     opacity: 1;
     visibility: visible;
+    display: block;
     animation: fadeIn 0s ease-in;
   }
 
@@ -23,6 +24,7 @@
     min-width: 223px;
     opacity: 0;
     visibility: hidden;
+    display: none;
     animation: fadeOut 0.7s ease-in;
 
     // Cầu nối khi hover
@@ -78,21 +80,21 @@
         text-decoration: none;
         background-color: var(--background-hover-menu-item);
       }
-
-      // Dùng cho các mục menu nhỏ gọn hơn
     }
 
+    // Dùng cho các mục menu nhỏ gọn hơn
     .compact {
-      font-size: 1.4rem;
+      font-family: var(--font-family-display);
+      font-size: 1.3rem;
       padding-left: var(--spacing-24);
       height: 38px;
-      font-weight: 500;
 
       &:first-of-type,
       &:hover {
         background-color: var(--text-color-opacity-6);
       }
     }
+
     .separator {
       border-top: 1px solid var(--text-color-opacity-120);
     }

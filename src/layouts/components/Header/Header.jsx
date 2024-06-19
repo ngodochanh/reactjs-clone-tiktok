@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react';
 
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
-import { EllipsisVertical, Inbox, Logo, Plus, Send } from '~/assets/images';
-import { MENU_ITEMS, USER_MENU_ITEMS } from './constants';
+import { Link } from 'react-router-dom';
 
+import { EllipsisVertical, Inbox, Logo, Plus, Send } from '~/assets/icons';
 import Button from '~/components/Button';
 import { Menu } from '~/components/Popper';
 import UserAvatar from '~/components/UserAvatar';
 import Tooltip from '~/components/Tooltip';
+
+import { MENU_ITEMS, USER_MENU_ITEMS } from './constants';
 import Search from './Search';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -46,7 +49,9 @@ function Header() {
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
         {/* Logo */}
-        <Logo className={cx('logo')} />
+        <Link to={config.routes.home} className={cx('logo')}>
+          <Logo />
+        </Link>
 
         {/* Search */}
         <div className={cx('search')}>

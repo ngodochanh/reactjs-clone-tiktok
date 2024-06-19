@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
  * Component MenuItem
  *
  * @param {object} item - Thông tin về item menu để hiển thị menu-item.
- * @param {boolean} compact - Có sử dụng lớp 'menu-item-compact' hay không.
+ * @param {boolean} compact - Có sử dụng lớp 'compact' hay không.
  * @param {function} onClick - Hàm xử lý khi một mục menu được nhấn.
  *
  * @returns {JSX.Element} - Component MenuItem đã render.

@@ -1,4 +1,4 @@
-import { ChevronLeft } from '~/assets/images';
+import { ChevronLeft } from '~/assets/icons';
 import styles from './Menu.module.scss';
 import classNames from 'classnames/bind';
 

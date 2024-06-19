@@ -10,11 +10,12 @@ import {
   Profile,
   Setting,
   Studio,
-} from '~/assets/images';
+} from '~/assets/icons';
 import Toggle from './DarkMode/Toggle';
+import config from '~/config';
 
 const MENU_ITEMS = [
-  { id: 'header-idea', icon: <Idea />, title: 'LIVE Creator Hub', to: '/live/creator' },
+  { id: 'header-idea', icon: <Idea />, title: 'LIVE Creator Hub', to: config.routes.live },
   {
     id: 'header-languages',
     icon: <Language />,
@@ -28,17 +29,17 @@ const MENU_ITEMS = [
       ],
     },
   },
-  { id: 'header-feedback', icon: <Feedback />, title: 'Feedback and help', to: '/feedback' },
+  { id: 'header-feedback', icon: <Feedback />, title: 'Feedback and help', to: config.routes.feedback },
   { id: 'header-keyboard', icon: <Keyboard />, title: 'Keyboard shortcuts' },
   { id: 'header-darkMode', icon: <DarkMode />, title: 'Dark mode', component: <Toggle /> },
 ];
 
 const USER_MENU_ITEMS = [
-  { id: 'view-profile', icon: <Profile />, title: 'View profile', to: '/profile' },
+  { id: 'view-profile', icon: <Profile />, title: 'View profile', to: config.routes.profile },
   { id: 'favorite', icon: <Favorite />, title: 'Favorites' },
-  { id: 'get-coin', icon: <Coin />, title: 'Get Coins', to: '/coin' },
+  { id: 'get-coin', icon: <Coin />, title: 'Get Coins', to: config.routes.coin },
   { id: 'setting', icon: <Setting />, title: 'Settings' },
-  { id: 'live-studio', icon: <Studio />, title: 'LIVE Studio', to: '/studio' },
+  { id: 'live-studio', icon: <Studio />, title: 'LIVE Studio', to: config.routes.studio },
   ...MENU_ITEMS,
   {
     id: 'log-out',

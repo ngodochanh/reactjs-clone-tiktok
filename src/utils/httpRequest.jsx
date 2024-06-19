@@ -1,4 +1,4 @@
-const baseURL = 'https://tiktok.fullstack.edu.vn/api';
+const baseURL = process.env.REACT_APP_BASE_URL;
 
 export async function get(endpoint, options = {}) {
   const url = `${baseURL}${endpoint}`;

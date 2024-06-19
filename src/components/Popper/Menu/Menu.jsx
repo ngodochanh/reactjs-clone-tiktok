@@ -30,12 +30,14 @@ function Menu({ children, menuList = [], menuClassName, menuPopupClassName, onCl
 
   // Effect đặt lại menuStack về trạng thái ban đầu khi menuPopup ẩn đi
   useEffect(() => {
-    menuPopupRef.current.addEventListener('mouseleave', () => {
-      setTimeout(() => {
-        setMenuStack([menuStack[0]]);
-      }, 700); // Thời gian phù hợp với animation fadeOut trong CSS (class .menu-popup )
-    });
-  }, []);
+    if (menuPopupRef.current) {
+      menuPopupRef.current.addEventListener('mouseleave', () => {
+        setTimeout(() => {
+          setMenuStack([menuStack[0]]);
+        }, 700); // Thời gian phù hợp với animation fadeOut trong CSS (class .menu-popup )
+      });
+    }
+  }, [menuStack]);
 
   // Xử lý khi một mục menu được nhấn
   const handleItemClick = (item) => {
@@ -69,17 +71,20 @@ function Menu({ children, menuList = [], menuClassName, menuPopupClassName, onCl
   return (
     <div className={menuClass}>
       {/* Nút khi hover thì hiển thị danh sách */}
-      <section className={cx('dropdown-menu')}>{children}</section>
+      <div className={cx('dropdown-menu')}>{children}</div>
 
       {/* Danh sách */}
-      <section className={menuPopupClass} ref={menuPopupRef}>
+      <div
+        className={menuPopupClass}
+        ref={menuPopupRef} // Hiển thị menu khi chuột vào
+      >
         <WrapperPopper>
           {/* Header menu */}
           {currentMenu?.label && <HeaderMenu label={currentMenu?.label} onBack={handleBackClick} />}
           {/* Menu list */}
           {renderMenuList()}
         </WrapperPopper>
-      </section>
+      </div>
     </div>
   );
 }

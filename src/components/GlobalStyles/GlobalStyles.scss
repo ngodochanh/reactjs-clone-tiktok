@@ -1,5 +1,5 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap');
 
 $primary: rgb(254, 44, 85);
 $black: rgb(22, 24, 35);
@@ -7,6 +7,8 @@ $almost-black: rgb(18, 18, 18);
 $dark-gray: rgb(37, 37, 37);
 $white: rgb(255, 255, 255);
 $border-radius: 92px;
+$font-family: TikTokFont, 'IBM Plex Sans', Arial, Tahoma, sans-serif;
+$font-family-display: TikTokDisplayFont;
 
 [data-theme='dark'] {
   --text-color: #{rgba($white, 0.9)};
@@ -28,6 +30,8 @@ $border-radius: 92px;
 }
 
 :root {
+  --font-family: #{$font-family};
+  --font-family-display: #{$font-family-display};
   --primary: #{$primary};
   --text-color: #{$black};
   --black: #{$black};
@@ -88,7 +92,7 @@ html {
 }
 
 body {
-  font-family: 'IBM Plex Sans', Arial, Tahoma, sans-serif;
+  font-family: var(--font-family);
   font-size: 1.6rem;
   line-height: 1.5;
   font-weight: 400;
@@ -102,13 +106,12 @@ input,
 [tabindex] {
   outline: none;
   border: none;
-  font-family: 'IBM Plex Sans', Arial, Tahoma, sans-serif;
+  font-family: var(--font-family);
   line-height: 1.5;
 }
 
 a[href] {
   text-decoration: none;
-  color: var(--text-color);
 }
 
 img {
@@ -117,9 +120,34 @@ img {
   object-fit: cover;
 }
 
+// Fonts embedded
+@font-face {
+  font-family: TikTokFont;
+  src: url('/assets/fonts/TikTokFont-Regular.woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: TikTokFont;
+  src: url('/assets/fonts/TikTokFont-Semibold.woff2');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: TikTokFont;
+  src: url('/assets/fonts/TikTokFont-Bold.woff2');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: TikTokDisplayFont;
+  src: url('/assets/fonts/TikTokDisplayFont-Bold.woff2');
+}
+
+// Scrollbar CSS
 html *::-webkit-scrollbar {
   border-radius: 0;
-  width: var(--spacing-8);
+  width: 8px;
 }
 
 html *::-webkit-scrollbar-thumb {

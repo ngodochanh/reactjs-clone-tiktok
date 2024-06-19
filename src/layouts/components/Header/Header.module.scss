@@ -45,8 +45,11 @@
 }
 
 // Logo
-.logo {
+.inner .logo {
   color: var(--fill-logo);
+  display: block;
+  height: fit-content;
+  line-height: 0;
 }
 
 // Search
@@ -77,9 +80,9 @@
 
     .inbox-count {
       position: absolute;
-      top: -50%;
+      top: -100%;
       left: 50%;
-      transform: translateY(28%);
+      transform: translateY(100%);
       font-weight: 600;
       color: var(--white);
       z-index: 100;
@@ -89,8 +92,8 @@
         display: block;
         position: absolute;
         top: 50%;
-        left: -95%;
-        transform: translate(50%, -48%);
+        right: 50%;
+        transform: translate(50%, -50%);
         background-color: var(--primary);
         border-radius: var(--spacing-10);
         padding: 0 var(--spacing-4);
