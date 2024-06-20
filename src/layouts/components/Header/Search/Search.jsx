@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import styles from './Search.module.scss';
 import classNames from 'classnames/bind';
 import { WrapperPopper } from '~/components/Popper';
@@ -117,4 +117,9 @@ function Search() {
   );
 }
 
-export default Search;
+export default memo(Search);
+
+/**
+ * memo
+ *     - Trách render khi setMenuItems (bên Header) cập nhật
+ */

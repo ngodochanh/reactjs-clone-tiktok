@@ -17,9 +17,10 @@ import config from '~/config';
 const cx = classNames.bind(styles);
 
 function Header() {
-  const [menuItems, setMenuItems] = useState([]); // State để lưu trữ mảng Menu Item
-
-  let isUserLoggedIn = false; // State để xác định trạng thái đăng nhập của người dùng
+  // State để lưu trữ mảng Menu Item
+  const [menuItems, setMenuItems] = useState([]);
+  // State để xác định trạng thái đăng nhập của người dùng
+  let isUserLoggedIn = false;
 
   // Sử dụng useEffect để cập nhật menuItems khi trạng thái đăng nhập thay đổi
   useEffect(() => {
@@ -86,27 +87,22 @@ function Header() {
           )}
 
           {/* Kebab menu */}
-          {menuItems.length > 0 && (
-            <Menu
-              menuList={menuItems}
-              menuClassName={cx('kebab-menu')}
-              menuPopupClassName={cx('menu-popup', isUserLoggedIn && 'logged-in')}
-              onClick={handleMenuClick}
-            >
-              {isUserLoggedIn ? (
-                // Avatar
-                <UserAvatar
-                  avatarImage="https://i.pinimg.com/564x/54/47/e7/5447e7457f0d71b51408b13a1ecdb76d.jpg"
-                  small
-                />
-              ) : (
-                // Menu list
-                <div className={cx('menu-toggle')}>
-                  <EllipsisVertical className={cx('menu-icon')} />
-                </div>
-              )}
-            </Menu>
-          )}
+          <Menu
+            menuList={menuItems}
+            menuClassName={cx('kebab-menu')}
+            menuPopupClassName={cx('menu-popup', isUserLoggedIn && 'logged-in')}
+            onClick={handleMenuClick}
+          >
+            {isUserLoggedIn ? (
+              // Avatar
+              <UserAvatar avatarImage="https://i.pinimg.com/564x/54/47/e7/5447e7457f0d71b51408b13a1ecdb76d.jpg" small />
+            ) : (
+              // Menu list
+              <div className={cx('menu-toggle')}>
+                <EllipsisVertical className={cx('menu-icon')} />
+              </div>
+            )}
+          </Menu>
         </div>
       </div>
     </header>

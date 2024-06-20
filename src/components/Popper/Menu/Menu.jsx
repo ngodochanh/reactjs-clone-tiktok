@@ -21,6 +21,8 @@ const cx = classNames.bind(styles);
  * @returns {JSX.Element} - Component Menu đã render.
  */
 function Menu({ children, menuList = [], menuClassName, menuPopupClassName, onClick = () => {} }) {
+  // State lưu trữ tạng thái hiện hoặc ẩn .menu-popup để xử lý có hiệu ứng (bởi vì css display: block mất hiệu ứng)
+  const [isVisible, setIsVisible] = useState(false);
   // Ref để lưu trữ tham chiếu đến phần tử menu-popup
   const menuPopupRef = useRef();
   // State lưu trữ các trạng thái của menu để điều hướng qua các mục con
@@ -28,12 +30,18 @@ function Menu({ children, menuList = [], menuClassName, menuPopupClassName, onCl
   // Menu hiện tại được hiển thị, lấy từ phần tử cuối của menuStack
   const currentMenu = menuStack[menuStack.length - 1];
 
+  // Effect cập nhật khi menuList truyền từ ngoài thay đổi
+  useEffect(() => {
+    setMenuStack([{ data: menuList }]);
+  }, [menuList]);
+
   // Effect đặt lại menuStack về trạng thái ban đầu khi menuPopup ẩn đi
   useEffect(() => {
     if (menuPopupRef.current) {
       menuPopupRef.current.addEventListener('mouseleave', () => {
         setTimeout(() => {
           setMenuStack([menuStack[0]]);
+          setIsVisible(false); // Không hover vào ẩn menu-popup
         }, 700); // Thời gian phù hợp với animation fadeOut trong CSS (class .menu-popup )
       });
     }
@@ -71,20 +79,27 @@ function Menu({ children, menuList = [], menuClassName, menuPopupClassName, onCl
   return (
     <div className={menuClass}>
       {/* Nút khi hover thì hiển thị danh sách */}
-      <div className={cx('dropdown-menu')}>{children}</div>
+      <div
+        className={cx('dropdown-menu')}
+        onMouseEnter={() => setIsVisible(true)} // Khi hover vào thì hiển thị menu-popup
+      >
+        {children}
+      </div>
 
       {/* Danh sách */}
-      <div
-        className={menuPopupClass}
-        ref={menuPopupRef} // Hiển thị menu khi chuột vào
-      >
-        <WrapperPopper>
-          {/* Header menu */}
-          {currentMenu?.label && <HeaderMenu label={currentMenu?.label} onBack={handleBackClick} />}
-          {/* Menu list */}
-          {renderMenuList()}
-        </WrapperPopper>
-      </div>
+      {isVisible && (
+        <div
+          className={menuPopupClass}
+          ref={menuPopupRef} // Hiển thị menu khi chuột vào
+        >
+          <WrapperPopper>
+            {/* Header menu */}
+            {currentMenu?.label && <HeaderMenu label={currentMenu?.label} onBack={handleBackClick} />}
+            {/* Menu list */}
+            {renderMenuList()}
+          </WrapperPopper>
+        </div>
+      )}
     </div>
   );
 }
