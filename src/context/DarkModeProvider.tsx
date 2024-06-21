@@ -1,18 +1,25 @@
 import { useState, useEffect, createContext } from 'react';
 
-// Tạo ngữ cảnh cho chế độ Dark Mode
-export const DarkModeContext = createContext();
+type DarkModeContextType = {
+  isDarkMode: boolean;
+  toggleDarkMode: () => void;
+};
 
-/**
- * DarkModeProvider Component
- *
- * @param {React.ReactNode} children - Các thành phần con của DarkModeProvider.
- *
- * @returns {JSX.Element} - Component DarkModeProvider đã render.
- */
-const DarkModeProvider = ({ children }) => {
+type DarkModeProviderType = {
+  children: React.ReactNode; // Các thành phần con của DarkModeProvider.
+};
+
+// Tạo ngữ cảnh cho chế độ Dark Mode
+export const DarkModeContext = createContext<DarkModeContextType>({
+  isDarkMode: false,
+  toggleDarkMode: () => {},
+});
+
+const DarkModeProvider = ({ children }: DarkModeProviderType) => {
   // Khởi tạo state isDarkMode từ giá trị trong localStorage hoặc mặc định là false
-  const [isDarkMode, setIsDarkMode] = useState(JSON.parse(localStorage.getItem('darkMode')) || false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(
+    JSON.parse(localStorage.getItem('darkMode') as string) ?? false,
+  );
 
   useEffect(() => {
     // Lưu trữ giá trị isDarkMode vào localStorage mỗi khi nó thay đổi

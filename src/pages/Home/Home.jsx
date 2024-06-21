@@ -4,11 +4,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 function Home() {
-  return (
-    <div className="" style={{ height: 2000 }}>
-      Home
-    </div>
-  );
+  return <div>Home</div>;
 }
 
 export default Home;

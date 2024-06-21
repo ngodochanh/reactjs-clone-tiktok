@@ -12,8 +12,14 @@ import config from '~/config';
  *        - Nếu layout có giá trị: sẽ sử dụng layout đặc biệt được truyền vào.
  */
 
+type RouteType = {
+  path: string;
+  component: React.ComponentType<any>;
+  layout?: React.ComponentType<any> | null | undefined;
+};
+
 // Các route công khai (không cần đăng nhập vẫn có thể truy cập)
-const publicRoutes = [
+const publicRoutes: RouteType[] = [
   { path: config.routes.home, component: Home }, // Trang chủ
   { path: config.routes.following, component: Following }, // Trang Following
   { path: config.routes.profile, component: Profile }, // Trang Profile với tham số nickname
@@ -21,6 +27,6 @@ const publicRoutes = [
 ];
 
 // Các route riêng tư (phải đăng nhập mới có thể truy cập)
-const privateRoutes = [];
+const privateRoutes: RouteType[] = [];
 
 export { publicRoutes, privateRoutes };

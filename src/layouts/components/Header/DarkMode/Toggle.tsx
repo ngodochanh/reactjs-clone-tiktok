@@ -5,17 +5,22 @@ import { DarkModeContext } from '~/context/DarkModeProvider';
 
 const cx = classNames.bind(styles);
 
+type DarkModeContextType = {
+  isDarkMode: boolean;
+  toggleDarkMode: () => void;
+};
+
 function Toggle() {
   // Sử dụng hook useContext để lấy isDarkMode và toggleDarkMode từ DarkModeContext
-  const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
+  const themeDarkMode = useContext<DarkModeContextType>(DarkModeContext);
 
   // Tạo class cho div toggle, thêm class 'active' nếu isDarkMode là true
   const classes = cx('wrapper', {
-    active: isDarkMode,
+    active: themeDarkMode.isDarkMode,
   });
 
   // Div thay đổi chế độ dark mode khi được click
-  return <div className={classes} onClick={toggleDarkMode}></div>;
+  return <div className={classes} onClick={themeDarkMode.toggleDarkMode}></div>;
 }
 
 export default Toggle;

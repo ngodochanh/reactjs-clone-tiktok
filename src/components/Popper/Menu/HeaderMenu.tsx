@@ -4,15 +4,12 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-/**
- * Component HeaderMenu
- *
- * @param {string} label - Tiêu đề của header menu.
- * @param {function} onBack - Hàm xử lý khi nhấn quay trở lại.
- *
- * @returns {JSX.Element} - Component HeaderMenu đã render.
- */
-function HeaderMenu({ label, onBack }) {
+type HeaderMenuProps = {
+  label: string; // Tiêu đề
+  onBack?: () => void; // Hàm xử lý khi nhấn quay trở lại
+};
+
+function HeaderMenu({ label, onBack = () => {} }: HeaderMenuProps) {
   return (
     <header className={cx('menu-header')} onClick={onBack}>
       <ChevronLeft />

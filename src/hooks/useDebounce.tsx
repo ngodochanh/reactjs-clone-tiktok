@@ -7,9 +7,9 @@ import { useEffect, useState } from 'react';
  * @param {number} delay - Thời gian trì hoãn tính bằng mili giây trước khi cập nhật giá trị debounce.
  * @returns {any} - Giá trị đã được debounce.
  */
-function useDebounce(value, delay) {
+function useDebounce(value: any, delay: number) {
   // State để lưu trữ giá trị debounce
-  const [debouncedValue, setDebouncedValue] = useState(value);
+  const [debouncedValue, setDebouncedValue] = useState<any>(value);
 
   useEffect(() => {
     // Thiết lập một timeout để cập nhật giá trị debounce sau thời gian trì hoãn đã định

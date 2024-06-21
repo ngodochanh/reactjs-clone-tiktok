@@ -14,13 +14,33 @@ import { MENU_ITEMS, USER_MENU_ITEMS } from './constants';
 import Search from './Search';
 import config from '~/config';
 
+interface MenuItemType {
+  id: string;
+  icon?: React.ReactNode; // Sử dụng ReactNode cho icon để có thể truyền component hoặc các phần tử React khác
+  title: string;
+  to?: string;
+  children?: {
+    label: string;
+    compact?: boolean; // đây là custom style lại cho btn nhỏ gọn hơn
+    data: MenuItemType[]; // có thẻ có kiểu dữ liệu khác
+  };
+  component?: JSX.Element | undefined; // Cho phép truyền component cho mục menu
+  separator?: boolean; // đường phân cách giữa các mục trong Menu
+  type?: string;
+  code?: string;
+}
+
+interface MenuStack {
+  data: MenuItemType[];
+}
+
 const cx = classNames.bind(styles);
 
 function Header() {
   // State để lưu trữ mảng Menu Item
-  const [menuItems, setMenuItems] = useState([]);
+  const [menuItems, setMenuItems] = useState<MenuItemType[]>([]);
   // State để xác định trạng thái đăng nhập của người dùng
-  let isUserLoggedIn = false;
+  let isUserLoggedIn = true;
 
   // Sử dụng useEffect để cập nhật menuItems khi trạng thái đăng nhập thay đổi
   useEffect(() => {
@@ -33,7 +53,7 @@ function Header() {
   }, [isUserLoggedIn]);
 
   // Hàm xử lý khi một mục menu được nhấn (parentMenu là cha của item)
-  const handleMenuClick = (item, parentMenu) => {
+  const handleMenuClick = (item: MenuItemType, parentMenu: MenuStack) => {
     switch (item.type) {
       case 'languages': // Xử lý thay đổi ngôn ngữ
         parentMenu.data.splice(parentMenu.data.indexOf(item), 1);
@@ -95,7 +115,11 @@ function Header() {
           >
             {isUserLoggedIn ? (
               // Avatar
-              <UserAvatar avatarImage="https://i.pinimg.com/564x/54/47/e7/5447e7457f0d71b51408b13a1ecdb76d.jpg" small />
+              <UserAvatar
+                avatarImage="https://i.pinimg.com/564x/54/47/e7/5447e7457f0d71b51408b13a1ecdb76d.jpg"
+                avatarAlt="avatar"
+                small
+              />
             ) : (
               // Menu list
               <div className={cx('menu-toggle')}>

@@ -9,12 +9,33 @@ import * as searchServices from '~/services/searchService';
 
 const cx = classNames.bind(styles);
 
-function Search() {
-  const [isSearching, setIsSearching] = useState(false); // Trạng thái tìm kiếm
-  const [results, setResults] = useState([]); // Kết quả tìm kiếm
-  const [query, setQuery] = useState(''); // Nội dung tìm kiếm
+type UserType = {
+  avatar: string;
+  bio: string;
+  created_at: string;
+  facebook_url: string;
+  first_name: string;
+  followers_count: number;
+  followings_count: number;
+  full_name: string;
+  id: number;
+  instagram_url: string;
+  last_name: string;
+  likes_count: number;
+  nickname: string;
+  tick: false;
+  twitter_url: string;
+  updated_at: string;
+  website_url: string;
+  youtube_url: string;
+};
 
-  const searchRef = useRef(); // Tham chiếu đến input tìm kiếm.
+function Search() {
+  const [isSearching, setIsSearching] = useState<boolean>(false); // Trạng thái tìm kiếm
+  const [results, setResults] = useState<UserType[]>([]); // Kết quả tìm kiếm
+  const [query, setQuery] = useState<string>(''); // Nội dung tìm kiếm
+
+  const searchRef = useRef<HTMLInputElement>(null); // Tham chiếu đến input tìm kiếm.
   const debouncedQuery = useDebounce(query, 700); // Sử dụng hook debounce để trì hoãn việc gửi query
 
   useEffect(() => {
@@ -43,7 +64,7 @@ function Search() {
   };
 
   // Xử lý khi nội dung tìm kiếm thay đổi
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Không cho phép ký tự trắng đầu tiên
     const value = e.target.value.trimStart();
     setQuery(value);
@@ -53,11 +74,11 @@ function Search() {
   const handleClearSearch = () => {
     setQuery('');
     setResults([]);
-    searchRef.current.focus();
+    searchRef.current?.focus();
   };
 
   // Xử lý khi người dùng gửi biểu mẫu tìm kiếm
-  const handleSubmitSearch = (e) => {
+  const handleSubmitSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // fetchSearchResults();
@@ -103,12 +124,12 @@ function Search() {
               <AccountItem
                 key={item.id}
                 avatarImage={item.avatar}
+                avatarAlt={item.nickname}
                 username={item.full_name}
                 nickname={item.nickname}
                 verified={item.tick}
               />
             ))}
-
             {query && <div className={cx('view-all-results')}>View all results for "{query}"</div>}
           </WrapperPopper>
         </div>
