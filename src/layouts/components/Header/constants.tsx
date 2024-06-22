@@ -13,22 +13,7 @@ import {
 } from '~/assets/icons';
 import Toggle from './DarkMode/Toggle';
 import config from '~/config';
-
-interface MenuItemType {
-  id: string;
-  icon?: React.ReactNode; // Sử dụng ReactNode cho icon để có thể truyền component hoặc các phần tử React khác
-  title: string;
-  to?: string;
-  children?: {
-    label: string;
-    compact?: boolean; // đây là custom style lại cho btn nhỏ gọn hơn
-    data: MenuItemType[]; // có thẻ có kiểu dữ liệu khác
-  };
-  component?: JSX.Element | undefined; // Cho phép truyền component cho mục menu
-  separator?: boolean; // đường phân cách giữa các mục trong Menu
-  type?: string;
-  code?: string;
-}
+import { MenuItemType } from '~/types/Menu';
 
 const MENU_ITEMS: MenuItemType[] = [
   {

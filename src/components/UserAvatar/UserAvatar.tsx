@@ -2,12 +2,11 @@ import { useState } from 'react';
 import images from '~/assets/images';
 import styles from './UserAvatar.module.scss';
 import classNames from 'classnames/bind';
+import { AvatarType } from '~/types/Avatar';
 
 const cx = classNames.bind(styles);
 
-type UserAvatarProps = {
-  avatarImage: string; // Đường dẫn hình ảnh avatar
-  avatarAlt: string; // Mô tả hình ảnh avatar
+type UserAvatarProps = AvatarType & {
   fallBack?: string; // Trường hợp muốn hình ảnh mặc định
   small?: boolean; // Kích thước nhỏ (32px x 32px)
   medium?: boolean; // Kích thước nhỏ (40px x 40px)

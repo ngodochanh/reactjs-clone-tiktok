@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-type TooltipType = {
+type TooltipProps = {
   children: React.ReactNode; // Phần tử cần mô tả
   text: string; // Nội dung mô tả
   bottom?: boolean; // Vị trí phía dưới
@@ -11,7 +11,7 @@ type TooltipType = {
   className?: string; // Thêm lớp class để tùy chỉnh CSS
 };
 
-function Tooltip({ children, text, bottom = false, right = false, className }: TooltipType) {
+function Tooltip({ children, text, bottom = false, right = false, className }: TooltipProps) {
   const classes = cx('text', {
     bottom,
     right,

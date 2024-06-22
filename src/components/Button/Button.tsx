@@ -6,14 +6,14 @@ const cx = classNames.bind(styles);
 
 type ButtonType = string | React.ComponentType<any>;
 
-interface ButtonPropsAdditional {
+type ButtonPropsAdditional = {
   [passProps: string]: any; // Các props và xử lý sự kiện khác
   className?: string; // Tên lớp CSS bổ sung
   to?: string; // Liên kết React Router
   href?: string; // Liên kết thẻ a
-}
+};
 
-interface ButtonProps extends ButtonPropsAdditional {
+type ButtonProps = ButtonPropsAdditional & {
   children: React.ReactNode; // Nội dung hoặc văn bản
   leftIcon?: React.ReactNode; // Biểu tượng bên trái
   rightIcon?: React.ReactNode; // Biểu tượng bên phải
@@ -23,7 +23,7 @@ interface ButtonProps extends ButtonPropsAdditional {
   primary?: boolean; // Nút chính
   disabled?: boolean; // Vô hiệu hóa
   large?: boolean; // Kích thước lớn
-}
+};
 
 // Hàm xóa xử lý sự kiện nếu nút bị vô hiệu hóa
 const removeEventsOnDisabled = (disabled: boolean, args: any) => {

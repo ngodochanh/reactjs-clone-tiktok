@@ -1,24 +1,35 @@
 import { useState, useEffect, createContext } from 'react';
 
+type IsDarkModeType = boolean;
+
 type DarkModeContextType = {
-  isDarkMode: boolean;
+  isDarkMode: IsDarkModeType;
   toggleDarkMode: () => void;
 };
 
-type DarkModeProviderType = {
+type DarkModeProviderProps = {
   children: React.ReactNode; // Các thành phần con của DarkModeProvider.
 };
 
+// Giá trị mặc định cho isDarkMode
+const DEFAULT_DARK_MODE: IsDarkModeType = false;
+
+// Định nghĩa enum cho Theme
+enum Theme {
+  DARK = 'dark',
+  LIGHT = 'light',
+}
+
 // Tạo ngữ cảnh cho chế độ Dark Mode
 export const DarkModeContext = createContext<DarkModeContextType>({
-  isDarkMode: false,
+  isDarkMode: DEFAULT_DARK_MODE,
   toggleDarkMode: () => {},
 });
 
-const DarkModeProvider = ({ children }: DarkModeProviderType) => {
+const DarkModeProvider = ({ children }: DarkModeProviderProps) => {
   // Khởi tạo state isDarkMode từ giá trị trong localStorage hoặc mặc định là false
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(
-    JSON.parse(localStorage.getItem('darkMode') as string) ?? false,
+  const [isDarkMode, setIsDarkMode] = useState<IsDarkModeType>(
+    JSON.parse(localStorage.getItem('darkMode') as string) ?? DEFAULT_DARK_MODE,
   );
 
   useEffect(() => {
@@ -26,11 +37,7 @@ const DarkModeProvider = ({ children }: DarkModeProviderType) => {
     localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
 
     // Cập nhật thuộc tính data-theme của thẻ body dựa trên giá trị isDarkMode
-    if (isDarkMode) {
-      document.body.setAttribute('data-theme', 'dark');
-    } else {
-      document.body.setAttribute('data-theme', 'light');
-    }
+    document.body.setAttribute('data-theme', isDarkMode ? Theme.DARK : Theme.LIGHT);
   }, [isDarkMode]); // Chỉ chạy lại effect khi isDarkMode thay đổi
 
   // Hàm chuyển đổi giá trị của isDarkMode giữa true và false

@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 import HeaderMenu from './HeaderMenu';
 import MenuItem from './MenuItem';
+import { MenuItemChildrenType, MenuItemType } from '~/types/Menu';
 
 const cx = classNames.bind(styles);
 
@@ -12,30 +13,8 @@ type MenuProps = {
   menuList: any; // Mảng danh sách menu
   menuClassName?: string; // Tên lớp CSS cho wrapper của menu (nút hover và danh sách)
   menuPopupClassName?: string; // Tên lớp CSS cho wrapper của danh sách menu
-  onClick?: (item: MenuItemType, currentMenu: MenuStackType) => void; // Hàm xử lý khi một mục menu được nhấn
+  onClick?: (item: MenuItemType, currentMenu: MenuItemChildrenType) => void; // Hàm xử lý khi một mục menu được nhấn
 };
-
-interface MenuItemType {
-  id: string;
-  icon?: React.ReactNode; // Sử dụng ReactNode cho icon để có thể truyền component hoặc các phần tử React khác
-  title: string;
-  to?: string;
-  children?: {
-    label: string;
-    compact?: boolean; // đây là custom style lại cho btn nhỏ gọn hơn
-    data: MenuItemType[]; // có thẻ có kiểu dữ liệu khác
-  };
-  component?: JSX.Element; // Cho phép truyền component cho mục menu
-  separator?: boolean; // đường phân cách giữa các mục trong Menu
-  type?: string;
-  code?: string;
-}
-
-interface MenuStackType {
-  label?: string;
-  compact?: boolean; // đây là custom style lại cho btn nhỏ gọn hơn
-  data: MenuItemType[]; // có thẻ có kiểu dữ liệu khác
-}
 
 function Menu({ children, menuList = [], menuClassName, menuPopupClassName, onClick = () => {} }: MenuProps) {
   // State lưu trữ tạng thái hiện hoặc ẩn .menu-popup để xử lý có hiệu ứng (bởi vì css display: block mất hiệu ứng)
@@ -43,11 +22,9 @@ function Menu({ children, menuList = [], menuClassName, menuPopupClassName, onCl
   // Ref để lưu trữ tham chiếu đến phần tử menu-popup
   const menuPopupRef = useRef<HTMLDivElement>(null);
   // State lưu trữ các trạng thái của menu để điều hướng qua các mục con
-  const [menuStack, setMenuStack] = useState<MenuStackType[]>([{ data: menuList }]);
+  const [menuStack, setMenuStack] = useState<MenuItemChildrenType[]>([{ data: menuList }]);
   // Menu hiện tại được hiển thị, lấy từ phần tử cuối của menuStack
-  const currentMenu: MenuStackType = menuStack[menuStack.length - 1];
-
-  console.log(currentMenu);
+  const currentMenu: MenuItemChildrenType = menuStack[menuStack.length - 1];
 
   // Effect cập nhật khi menuList truyền từ ngoài thay đổi
   useEffect(() => {

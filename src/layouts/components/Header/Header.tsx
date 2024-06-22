@@ -13,26 +13,7 @@ import Tooltip from '~/components/Tooltip';
 import { MENU_ITEMS, USER_MENU_ITEMS } from './constants';
 import Search from './Search';
 import config from '~/config';
-
-interface MenuItemType {
-  id: string;
-  icon?: React.ReactNode; // Sử dụng ReactNode cho icon để có thể truyền component hoặc các phần tử React khác
-  title: string;
-  to?: string;
-  children?: {
-    label: string;
-    compact?: boolean; // đây là custom style lại cho btn nhỏ gọn hơn
-    data: MenuItemType[]; // có thẻ có kiểu dữ liệu khác
-  };
-  component?: JSX.Element | undefined; // Cho phép truyền component cho mục menu
-  separator?: boolean; // đường phân cách giữa các mục trong Menu
-  type?: string;
-  code?: string;
-}
-
-interface MenuStack {
-  data: MenuItemType[];
-}
+import { MenuItemDataType, MenuItemType } from '~/types/Menu';
 
 const cx = classNames.bind(styles);
 
@@ -53,7 +34,7 @@ function Header() {
   }, [isUserLoggedIn]);
 
   // Hàm xử lý khi một mục menu được nhấn (parentMenu là cha của item)
-  const handleMenuClick = (item: MenuItemType, parentMenu: MenuStack) => {
+  const handleMenuClick = (item: MenuItemType, parentMenu: MenuItemDataType) => {
     switch (item.type) {
       case 'languages': // Xử lý thay đổi ngôn ngữ
         parentMenu.data.splice(parentMenu.data.indexOf(item), 1);
