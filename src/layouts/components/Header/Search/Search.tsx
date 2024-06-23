@@ -1,7 +1,7 @@
 import { memo, useEffect, useRef, useState } from 'react';
 import styles from './Search.module.scss';
 import classNames from 'classnames/bind';
-import { WrapperPopper } from '~/components/Popper';
+import WrapperPopper from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { Close, Find, Spinner } from '~/assets/icons';
 import { useDebounce } from '~/hooks';

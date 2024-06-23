@@ -1,0 +1,44 @@
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 200ms ease-in-out 0s;
+
+  color: var(--text-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: capitalize;
+
+  &:hover {
+    background-color: var(--background-hover-menu-item);
+  }
+
+  &.active {
+    color: var(--primary);
+  }
+
+  .icon {
+    flex-grow: 1;
+    display: grid;
+    place-items: center;
+
+    font-size: 3.2rem;
+  }
+
+  .title {
+    display: none;
+  }
+
+  @media screen and (min-width: 1070px) {
+    .icon {
+      flex-grow: 0;
+    }
+
+    .title {
+      display: inline;
+      flex-grow: 1;
+      margin-left: 8px;
+    }
+  }
+}

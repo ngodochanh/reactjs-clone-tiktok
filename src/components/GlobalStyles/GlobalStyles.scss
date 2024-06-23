@@ -16,6 +16,7 @@ $font-family-display: TikTokDisplayFont;
   --background-hover-menu-item: var(--text-color-opacity-4);
   --background-color-scrollbar-thumb: var(--text-color-opacity-8);
   --text-color-body: #000;
+  --default-background-color: var(--almost-black);
 
   // Color opacity
   --text-color-opacity-2: #{rgba($white, 0.02)};
@@ -67,12 +68,13 @@ $font-family-display: TikTokDisplayFont;
   --default-layout-horizontal-spacer: var(--spacing-16);
   --default-layout-max-width: calc(var(--default-layout-horizontal-spacer) + 1900px);
   --default-layout-min-width: calc(var(--default-layout-horizontal-spacer) + 608px);
+  --default-background-color: var(--white);
 
   // Header
   --header-height: 60px;
 
   // Sidebar
-  --sidebar-max-width: 240px;
+  --sidebar-max-width: 224px;
   --sidebar-min-width: 72px;
 
   @media screen and (min-width: 768px) {

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes';
-import DefaultLayout from './layouts';
+import MainLayout from './layouts';
 import { Fragment } from 'react';
 
 function App() {
@@ -9,8 +9,8 @@ function App() {
       <Routes>
         {/* Lặp qua mảng publicRoutes để tạo các Route */}
         {publicRoutes.map((route) => {
-          // Nếu route.layout là null thì sử dụng Fragment, nếu không có thì mặc định là DefaultLayout
-          let Layout = route.layout === null ? Fragment : route.layout || DefaultLayout;
+          // Nếu route.layout là null thì sử dụng Fragment, nếu không có thì mặc định là MainLayout
+          let Layout = route.layout === null ? Fragment : route.layout || MainLayout;
 
           // Lấy component của trang
           let Page = route.component;

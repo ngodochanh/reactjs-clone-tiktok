@@ -1,12 +1,10 @@
 [data-theme='dark'] {
-  --header-background-color: var(--almost-black);
   --fill-logo: var(--white);
   --background-btn-upload: rgba(255, 255, 255, 0.08);
   --border-color-btn-upload: transparent;
 }
 
 [data-theme='light'] {
-  --header-background-color: var(--white);
   --fill-logo: var(--black);
   --background-btn-upload: var(--white);
   --border-color-btn-upload: var(--text-color-opacity-120);
@@ -21,7 +19,7 @@
 
   height: var(--header-height);
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
-  background-color: var(--header-background-color);
+  background-color: var(--default-background-color);
   border-bottom: 1px solid var(--text-color-opacity-120);
   z-index: 1000;
 }

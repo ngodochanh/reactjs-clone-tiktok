@@ -2,8 +2,9 @@ import Home from '~/pages/Home';
 import Following from '~/pages/Following';
 import Profile from '~/pages/Profile';
 import Upload from '~/pages/Upload';
-import { HeaderOnly } from '~/layouts';
+import { HeaderLayout } from '~/layouts';
 import config from '~/config';
+import Live from '~/pages/Live';
 
 /**
  * Các chú thích về layout:
@@ -23,7 +24,8 @@ const publicRoutes: RouteType[] = [
   { path: config.routes.home, component: Home }, // Trang chủ
   { path: config.routes.following, component: Following }, // Trang Following
   { path: config.routes.profile, component: Profile }, // Trang Profile với tham số nickname
-  { path: config.routes.upload, component: Upload, layout: HeaderOnly }, // Trang Upload với layout đặc biệt là HeaderOnly
+  { path: config.routes.upload, component: Upload, layout: HeaderLayout }, // Trang Upload với layout đặc biệt là HeaderOnly
+  { path: config.routes.live, component: Live }, // Trang Following
 ];
 
 // Các route riêng tư (phải đăng nhập mới có thể truy cập)

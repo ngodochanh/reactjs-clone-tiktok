@@ -1,4 +1,9 @@
 .wrapper {
-  padding-left: var(--sidebar-horizontal-spacer);
-  padding-right: var(--sidebar-horizontal-spacer);
+  background-color: var(--default-background-color);
+  padding-top: 12px;
+  padding-bottom: 26px;
+
+  @media screen and (min-width: 1070px) {
+    padding-top: 20px;
+  }
 }
