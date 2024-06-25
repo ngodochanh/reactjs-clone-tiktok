@@ -1,5 +1,12 @@
 const images = {
-  noProfileImage: require('~/assets/images/noProfileImage.jpeg'),
+  noProfileImage: {
+    url: require('~/assets/images/NoProfileImage.jpeg'),
+    alt: 'No Profile Image',
+  },
+  tikTokEffects: {
+    url: require('~/assets/images/TikTokEffects.png'),
+    alt: 'TikTok Effects',
+  },
 };
 
 export default images;

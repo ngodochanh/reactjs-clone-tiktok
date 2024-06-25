@@ -16,8 +16,8 @@ type UserAvatarProps = AvatarType & {
 
 function UserAvatar({
   avatarImage,
-  avatarAlt,
-  fallBack = images.noProfileImage, // Nếu ảnh lỗi không lấy từ ngoài vào thì lấy mặc định
+  avatarAlt = 'avatar',
+  fallBack = images.noProfileImage.url, // Nếu ảnh lỗi không lấy từ ngoài vào thì lấy mặc định
   small = false,
   medium = false,
   average = false,

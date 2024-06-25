@@ -68,7 +68,9 @@
   }
 
   .btn-upload {
-    max-width: 116px;
+    --width: 116px;
+    max-width: var(--width); // Cần
+    width: var(--width); // Để cho btn dài ra đúng kích thước
     background-color: var(--background-btn-upload);
     border-color: var(--border-color-btn-upload);
   }

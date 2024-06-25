@@ -1,3 +1,11 @@
+[data-theme='dark'] {
+  --outline-background-color: var(--text-color-opacity-8);
+}
+
+[data-theme='light'] {
+  --outline-background-color: var(--white);
+}
+
 .wrapper {
   display: inline-flex;
   align-items: center;
@@ -52,7 +60,7 @@
 }
 
 .outline {
-  background-color: var(--white);
+  background-color: var(--outline-background-color);
   color: var(--primary);
   border-color: var(--primary);
 

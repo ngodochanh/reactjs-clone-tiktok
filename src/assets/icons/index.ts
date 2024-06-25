@@ -4,6 +4,6 @@ export * from './header-search';
 export * from './header-action';
 export * from './header-menu';
 
-export * from './sidebar-nav';
+export * from './sidebar';
 
 export { Logo };

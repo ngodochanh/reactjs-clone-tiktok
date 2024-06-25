@@ -1,4 +1,4 @@
-type MenuItemProps = {
+type NavigationType = {
   id: string;
   title: string; // Tiêu đề
   iconSolid: React.ReactNode; // Biểu tượng khi active
@@ -6,4 +6,15 @@ type MenuItemProps = {
   to: string; // Liên kết React Router
 };
 
-export type { MenuItemProps };
+type FooterMenuType = {
+  seeMore?: boolean; // Có hoặc không có nút "Xem thêm"
+  id: string;
+  title: string; // Tiêu đề của content
+  list: {
+    id: string;
+    label: string; // Nhãn hiển thị
+    to: string; // Đường dẫn
+  }[];
+};
+
+export type { NavigationType, FooterMenuType };

@@ -37,7 +37,7 @@
   // Search input
   .search-input {
     flex: 1 1 auto;
-    width: 140px;
+    width: 127px; // Để input có kích thước dãn ra co vào
     background-color: transparent;
     caret-color: var(--primary);
     font-weight: 400;
