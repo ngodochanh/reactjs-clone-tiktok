@@ -28,6 +28,7 @@ $font-family-display: TikTokDisplayFont;
   --text-color-opacity-120: #{rgba($white, 0.12)};
   --text-color-opacity-160: #{rgba($white, 0.16)};
   --text-color-opacity-340: #{rgba($white, 0.34)};
+  --text-color-opacity-750: #{rgba($white, 0.75)};
 }
 
 :root {
@@ -54,6 +55,7 @@ $font-family-display: TikTokDisplayFont;
   --text-color-opacity-120: #{rgba($black, 0.12)};
   --text-color-opacity-160: #{rgba($black, 0.16)};
   --text-color-opacity-340: #{rgba($black, 0.34)};
+  --text-color-opacity-750: #{rgba($black, 0.75)};
 
   // Spacing
   --spacing-4: 4px;

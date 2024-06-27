@@ -42,6 +42,7 @@ const NAVIGATION: NavigationType[] = [
     iconSolid: <UserGroupSolid />,
     iconRegular: <UserGroupRegular />,
     to: config.routes.friends,
+    isLoggedIn: true,
   },
   {
     id: 'live-sidebar',
@@ -56,6 +57,7 @@ const NAVIGATION: NavigationType[] = [
     iconSolid: <ProfileSidebar />,
     iconRegular: <ProfileSidebar />,
     to: config.routes.profile,
+    isLoggedIn: true,
   },
 ];
 

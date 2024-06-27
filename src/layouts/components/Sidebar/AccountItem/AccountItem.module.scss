@@ -1,0 +1,68 @@
+.wrapper {
+  --verified-width: 14px;
+
+  display: grid;
+  grid-template-columns: 32px;
+  justify-content: center;
+  column-gap: 12px;
+  padding: 8px;
+  margin-left: -8px; // Cho thẻ con tràn ra padding của thẻ cha
+  margin-right: -8px; //
+  border-radius: 4px;
+  transition: background-color 200ms ease-in-out 0s;
+
+  &:hover {
+    background-color: var(--background-hover-menu-item);
+    cursor: pointer;
+  }
+
+  // Info
+  .info {
+    display: none;
+    overflow: hidden;
+
+    // Username
+    .username {
+      display: flex;
+      align-items: baseline;
+      column-gap: var(--spacing-8);
+
+      h5 {
+        font-size: 1.5rem;
+        line-height: 1.3125;
+        font-weight: 700;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: var(--text-color);
+
+        display: block;
+        max-width: calc(100% - var(--verified-width) - var(--spacing-8));
+        width: fit-content;
+      }
+
+      svg {
+        font-size: 1.4rem;
+      }
+    }
+
+    // Nickname
+    .nickname {
+      width: 100%;
+      font-size: 1.2rem;
+      color: var(--text-color-opacity-50);
+      line-height: 1.25;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  @media screen and (min-width: 1070px) {
+    grid-template-columns: 32px 1fr;
+
+    .info {
+      display: block;
+    }
+  }
+}

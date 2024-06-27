@@ -4,6 +4,7 @@ type NavigationType = {
   iconSolid: React.ReactNode; // Biểu tượng khi active
   iconRegular: React.ReactNode; // Biểu tượng
   to: string; // Liên kết React Router
+  isLoggedIn?: boolean; // Phải đăng nhập mới chuyển hướng được
 };
 
 type FooterMenuType = {
